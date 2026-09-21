@@ -1,0 +1,636 @@
+/* ============================================================
+   VARIABLES
+   ============================================================ */
+
+:root {
+
+    --color-background: #f4f6f8;
+
+    --color-surface: #ffffff;
+
+    --color-text: #1f2933;
+
+    --color-text-light: #64748b;
+
+    --color-border: #d9e1e8;
+
+    --color-primary: #2563eb;
+
+    --color-primary-hover: #1d4ed8;
+
+    --color-error: #b42318;
+
+    --color-error-background: #fef3f2;
+
+    --color-result: #0f766e;
+
+    --radius: 10px;
+
+    --shadow:
+        0 8px 24px rgba(15, 23, 42, 0.08);
+
+}
+
+
+/* ============================================================
+   RESET
+   ============================================================ */
+
+* {
+
+    box-sizing: border-box;
+
+}
+
+
+body {
+
+    margin: 0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: var(--color-background);
+
+    color: var(--color-text);
+
+    line-height: 1.5;
+
+}
+
+
+/* ============================================================
+   APP
+   ============================================================ */
+
+.app {
+
+    width: min(1100px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding: 50px 0;
+
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.app__header {
+
+    margin-bottom: 32px;
+
+}
+
+
+.app__eyebrow {
+
+    margin: 0 0 8px;
+
+    color: var(--color-primary);
+
+    font-size: 0.85rem;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.08em;
+
+}
+
+
+.app__header h1 {
+
+    margin: 0;
+
+    font-size: clamp(
+        2rem,
+        5vw,
+        3rem
+    );
+
+}
+
+
+.app__description {
+
+    margin: 12px 0 0;
+
+    color: var(--color-text-light);
+
+    font-size: 1.1rem;
+
+}
+
+
+/* ============================================================
+   PRESSUPOST
+   ============================================================ */
+
+.budget {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.2fr)
+        minmax(300px, 0.8fr);
+
+    gap: 24px;
+
+}
+
+
+/* ============================================================
+   FORMULARI
+   ============================================================ */
+
+.budget__form {
+
+    padding: 32px;
+
+    background: var(--color-surface);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+}
+
+
+.budget__form h2 {
+
+    margin-top: 0;
+
+    margin-bottom: 28px;
+
+}
+
+
+.form-group {
+
+    margin-bottom: 22px;
+
+}
+
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-weight: 600;
+
+}
+
+
+.form-group small {
+
+    display: block;
+
+    margin-top: 6px;
+
+    color: var(--color-text-light);
+
+    font-size: 0.85rem;
+
+}
+
+
+/* ============================================================
+   INPUTS
+   ============================================================ */
+
+input,
+select {
+
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 1px solid var(--color-border);
+
+    border-radius: 6px;
+
+    background: #ffffff;
+
+    color: var(--color-text);
+
+    font: inherit;
+
+}
+
+
+input:focus,
+select:focus {
+
+    outline: none;
+
+    border-color: var(--color-primary);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(37, 99, 235, 0.12);
+
+}
+
+
+/* ============================================================
+   INPUT AMB SUFIX
+   ============================================================ */
+
+.input-with-suffix {
+
+    position: relative;
+
+}
+
+
+.input-with-suffix input {
+
+    padding-right: 50px;
+
+}
+
+
+.input-with-suffix span {
+
+    position: absolute;
+
+    top: 50%;
+
+    right: 16px;
+
+    transform: translateY(-50%);
+
+    color: var(--color-text-light);
+
+    font-weight: 600;
+
+}
+
+
+/* ============================================================
+   ERROR
+   ============================================================ */
+
+.error {
+
+    min-height: 20px;
+
+    margin-bottom: 20px;
+
+    padding: 0;
+
+    color: var(--color-error);
+
+    font-size: 0.9rem;
+
+}
+
+
+.error:not(:empty) {
+
+    padding: 12px;
+
+    background: var(--color-error-background);
+
+    border-left:
+        4px solid
+        var(--color-error);
+
+    border-radius: 4px;
+
+}
+
+
+/* ============================================================
+   BOTÓ
+   ============================================================ */
+
+button {
+
+    width: 100%;
+
+    padding: 14px 20px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: var(--color-primary);
+
+    color: white;
+
+    font: inherit;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+
+button:hover {
+
+    background: var(--color-primary-hover);
+
+}
+
+
+button:active {
+
+    transform: translateY(1px);
+
+}
+
+
+button:focus-visible {
+
+    outline:
+        3px solid
+        rgba(37, 99, 235, 0.35);
+
+    outline-offset: 3px;
+
+}
+
+
+/* ============================================================
+   RESULTAT
+   ============================================================ */
+
+.budget__result {
+
+    padding: 32px;
+
+    background: var(--color-surface);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    height: fit-content;
+
+}
+
+
+.budget__result h2 {
+
+    margin-top: 0;
+
+    margin-bottom: 24px;
+
+}
+
+
+/* ============================================================
+   FILES RESULTAT
+   ============================================================ */
+
+.result-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 14px 0;
+
+    border-bottom:
+        1px solid
+        var(--color-border);
+
+}
+
+
+.result-row span {
+
+    color: var(--color-text-light);
+
+}
+
+
+.result-total {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-top: 24px;
+
+    padding-top: 24px;
+
+    border-top:
+        2px solid
+        var(--color-text);
+
+    font-size: 1.2rem;
+
+}
+
+
+.result-total strong {
+
+    color: var(--color-result);
+
+    font-size: 1.8rem;
+
+}
+
+
+/* ============================================================
+   INFORMACIÓ
+   ============================================================ */
+
+.result-info {
+
+    margin-top: 30px;
+
+    padding: 16px;
+
+    background: #f8fafc;
+
+    border-radius: 6px;
+
+}
+
+
+.result-info p {
+
+    margin: 0;
+
+    color: var(--color-text-light);
+
+    font-size: 0.9rem;
+
+}
+
+
+/* ============================================================
+   TESTS
+   ============================================================ */
+
+.tests {
+
+    margin-top: 32px;
+
+    padding: 32px;
+
+    background: var(--color-surface);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+}
+
+
+.tests h2 {
+
+    margin-top: 0;
+
+}
+
+
+.tests__grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(200px, 1fr)
+        );
+
+    gap: 16px;
+
+}
+
+
+.test-card {
+
+    padding: 18px;
+
+    border:
+        1px solid
+        var(--color-border);
+
+    border-radius: 8px;
+
+}
+
+
+.test-card h3 {
+
+    margin-top: 0;
+
+    font-size: 1rem;
+
+}
+
+
+.test-card code {
+
+    display: block;
+
+    padding: 12px;
+
+    background: #f1f5f9;
+
+    border-radius: 4px;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 0.85rem;
+
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.app__footer {
+
+    margin-top: 30px;
+
+    text-align: center;
+
+    color: var(--color-text-light);
+
+    font-size: 0.9rem;
+
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 800px) {
+
+    .app {
+
+        width: min(
+            100% - 24px,
+            700px
+        );
+
+        padding: 24px 0;
+
+    }
+
+
+    .budget {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .budget__form,
+    .budget__result,
+    .tests {
+
+        padding: 24px;
+
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .app__header h1 {
+
+        font-size: 2rem;
+
+    }
+
+
+    .result-total {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 8px;
+
+    }
+
+}
