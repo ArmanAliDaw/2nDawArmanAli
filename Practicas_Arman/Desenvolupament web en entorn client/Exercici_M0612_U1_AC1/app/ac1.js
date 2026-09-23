@@ -57,7 +57,7 @@ function calculateBudget() {
         parseFloat(formData.hours);
     
     if (Number.isNaN(hours)) {
-        throw new Error("Las horas tienen que ser validos")
+        throw new Error("Las horas tienen que ser validos");
     }
     if (hours <0){
         throw new Error("Las horas no deberan que ser negativos");
@@ -67,7 +67,7 @@ function calculateBudget() {
         parseFloat(formData.price);
 
     if (Number.isNaN(price)) {
-        throw new Error("El precio tienen que ser valido")
+        throw new Error("El precio tienen que ser valido");
     }
     if (price <0){
         throw new Error("El precio no deberan que ser negativo");
