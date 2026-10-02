@@ -30,29 +30,70 @@ function showApiFeedback(message, type = "info") {
 // ==========================================
 // BLOC 1: DATES, TIMEZONE I FORMATS (DEFECTUÓS)
 // ==========================================
+function parseLocalDate(dateString) {
+    // Desmuntem "2026-09-18" -> [2026, 9, 18] 
+    const [year, month, day] = dateString.split('-').map(Number);
+
+    // Instanciem forçant hora local: (2026, 8, 18) 
+    return new Date(year, month - 1, day);
+} 
 
 function calculateStay(checkInStr, checkOutStr) {
     // BUG 1.1.1: Comparació alfabètica de cadenes, no temporal
-    if (checkInStr >= checkOutStr) {
+    const checkIn = parseLocalDate(checkInStr);
+    const checkOut = parseLocalDate(checkOutStr); 
+    if (checkIn >= checkOut) {
         console.log("Error en dates: La sortida sembla anterior a l'entrada (avaluació alfabètica)");
     }
 
     // BUG 1.1.2: Resta directa de cadenes de text (retorna NaN)
-    var nights = checkOutStr - checkInStr;
+    if(Number.isNaN(checkIn.getTime()) || Number.isNaN(checkOut.getTime())) 
+    {
+        throw new Error("Si us plau, introdueix dues dates vàlides.");
+    }
+
+    const diffTime = checkOut.getTime() - checkIn.getTime();
+    const MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+    const nights = Math.round(diffTime / MS_PER_DAY);
 
     return nights;
 }
 
-function formatBookingDate(dateString) {
-    var d = new Date(dateString);
-    // BUG 1.2.1: getMonth() va de 0 a 11 (setembre torna 8) + concatenació manual no regional
-    var formatted = d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear();
-    return formatted;
+// function formatBookingDate(dateString) {
+//     var d = new Date(dateString);
+//     // BUG 1.2.1: getMonth() va de 0 a 11 (setembre torna 8) + concatenació manual no regional
+//     var formatted = d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear();
+//     return formatted;
+// }
+
+function formatBookingDate(dateInput, locale = "ca-ES") {
+    const date = typeof dateInput === "string" ?
+        parseLocalDate(dateInput) : dateInput;
+
+    if (Number.isNaN(date.getTime())) {
+        return "Data invàlida";
+    }
+
+    const formatter = new Intl.DateTimeFormat(locale, {
+        day: "2-digit",
+        month: "long",
+        year: "numeric"
+    });
+
+    return formatter.format(date);
 }
 
-function formatPrice(amount) {
-    // BUG 1.2.2: No respecta la moneda triada ni la configuració regional (Intl)
-    return amount + " €";
+// function formatPrice(amount) {
+//     // BUG 1.2.2: No respecta la moneda triada ni la configuració regional (Intl)
+//     return amount + " €";
+// }
+
+    function formatPrice(amount, currency = "EUR", locale = "ca-ES") { 
+    if (typeof amount !== "number" || Number.isNaN(amount)) {
+    return "0.00 €";
+    }
+    return new Intl.NumberFormat(locale, {style: "currency",currency: currency}).format(amount); 
 }
 
 
