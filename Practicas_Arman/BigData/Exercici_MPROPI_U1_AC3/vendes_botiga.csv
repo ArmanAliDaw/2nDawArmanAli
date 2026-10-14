@@ -1,0 +1,20 @@
+data      , producte  , categoria  , unitats, preu_unitari, ciutat
+2026-01-03, Llibreta  , Papereria  , 12     , 2.50        , Barcelona
+2026-01-04, Bolígraf  , Papereria  , 30     , 1.20        , Girona
+2026-01-05, Motxilla  , Accessoris , 3      , 24.90       , Barcelona
+2026-01-06, Ampolla   , Accessoris , 8      , 12.00       , Tarragona
+2026-01-07, Llibreta  , Papereria  , 10     , 2.50        , Lleida
+2026-01-08, Auriculars, Electrònica, 4      , 39.95       , Barcelona
+2026-01-09, Bolígraf  , Papereria  , 15     , 1.20        , Girona
+2026-01-10, Motxilla  , Accessoris , 2      , 24.90       , Tarragona
+2026-01-11, Carregador, Electrònica, 5      , 18.50       , Barcelona
+2026-01-12, Llibreta  , Papereria  ,        , 2.50        , Girona
+2026-01-13, Ampolla   , Accessoris , 6      , "12,00"     , Barcelona
+2026-01-14, Auriculars, Electrònica, dos    , 39.95       , Lleida
+2026-01-15, Carregador, Electrònica, 3      , 18.50       , Tarragona
+2026-01-16, Motxilla  , Accessoris , 1      , 24.90       , Barcelona
+2026-01-17, Llibreta  , Papereria  , 7      , 2.50        , Barcelona
+2026-01-18, Bolígraf  , Papereria  , 20     , 1.20        , Girona
+2026-01-19, Ampolla   , Accessoris , 4      , 12.00       , 
+2026-01-20, Auriculars, Electrònica, 2      , 39.95       , Barcelona
+2026-01-21, Carregador, Electrònica, 6      , 18.50       , Girona

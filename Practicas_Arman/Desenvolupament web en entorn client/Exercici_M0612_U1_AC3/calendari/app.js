@@ -84,7 +84,7 @@ function renderCalendar() {
   //  - Afegeix la classe .selected si dateKey === selectedDateKey
   //  - Assigna l'esdeveniment click per cridar a selectDate(dateKey, dayElement) ALERTA, FUNCIÓ NO IMPLEMENTADA ENCARA
   //  - Afegeix la casella a 'daysGrid' (appendChild)
-  for (let index = 1; index < totalDays; index++) {
+  for (let index = 1; index <= totalDays; index++) {
     const dayElement = document.createElement('div');
     dayElement.classList.add('day');
     const dateKey = formatDateKey(currentYear, currentMonth, index)
@@ -117,9 +117,14 @@ nextBtn.addEventListener('click', () => { currentDate.setMonth(currentDate.getMo
  */
 function selectDate(dateKey, element) {
   // TODO 1: Elimina la classe .selected de tots els dies (.day)
-  
+  document.querySelectorAll('.day').forEach(day => { day.classList.remove('selected') });
   // TODO 2: Afegeix la classe .selected al dia clicat i actualitza 'selectedDateKey'
+  element.classList.add('selected')
+  selectedDateKey = dateKey;
   // TODO 3: Actualitza el títol 'selectedDateDisplay' i crida a renderEvents()
+  selectedDateDisplay.textContent = dateKey;
+  renderEvents();
+  renderCalendar();
 }
 
 /**
@@ -127,9 +132,27 @@ function selectDate(dateKey, element) {
  */
 function renderEvents() {
   // TODO 1: Neteja 'eventsList'
+  eventsList.innerHTML = '';
   // TODO 2: Si no hi ha 'selectedDateKey', surt de la funció
+  if (!selectedDateKey) {
+    return;
+  }
   // TODO 3: Obtén els esdeveniments de 'selectedDateKey' o un array buit
+  const dayEvents = events[selectedDateKey] || [];
   // TODO 4: Recorre els esdeveniments i crea els <li> amb un <span> (✕) per eliminar-los
+  dayEvents.forEach((eventText, index) => {
+    const li = document.createElement('li')
+    li.textContent = eventText;
+
+    const btn = document.createElement('span');
+    btn.textContent = '✕';
+    btn.classList.add('delete-btn');
+    btn.onclick = () => removeEvent(index);
+
+    li.appendChild(btn);
+    eventsList.appendChild(li);
+  });
+
 }
 
 /**
@@ -138,9 +161,21 @@ function renderEvents() {
 function addEvent(e) {
   e.preventDefault();
   // TODO 1: Valida que hi hagi un dia seleccionat (selectedDateKey) i text a l'input
+  if (!selectedDateKey) return;
+  const text = eventInput.value.trim();
+  if (!text) return;
   // TODO 2: Si no existeix events[selectedDateKey], inicialitza-ho com un array buit []
+  if (!events[selectedDateKey]) {
+    events[selectedDateKey] = [];
+  }
   // TODO 3: Afegeix el text a l'array d'esdeveniments de la data
+  events[selectedDateKey].push(text);
+  sendNotification('New Task', "Agregado", { text });
+  saveEvents();
   // TODO 4: Neteja l'input i torna a cridar renderEvents() i renderCalendar()
+  eventInput.value = '';
+  renderEvents();
+  renderCalendar();
 }
 
 /**
@@ -148,11 +183,19 @@ function addEvent(e) {
  */
 function removeEvent(index) {
   // TODO 1: Elimina l'element de l'array amb splice(index, 1)
+  events[selectedDateKey].splice(index, 1);
   // TODO 2: Si l'array es queda buit, elimina la clau de l'objecte 'events' amb 'delete'
+  if (events[selectedDateKey].length === 0) {
+    delete events[selectedDateKey];
+  }
+  saveEvents();
   // TODO 3: Torna a cridar renderEvents() i renderCalendar()
+  renderEvents();
+  renderCalendar();
 }
 
 // TODO: Escoltador d'esdeveniment per al formulari eventForm (submit -> addEvent)
+eventForm.addEventListener('submit', addEvent);
 
 
 // ==========================================================================
@@ -164,6 +207,7 @@ function removeEvent(index) {
  */
 function saveEvents() {
   // TODO: Utilitza JSON.stringify(events) i localStorage.setItem('calendar_events', ...)
+  localStorage.setItem('calendar_events', JSON.stringify(events));
 }
 
 /**
@@ -171,10 +215,20 @@ function saveEvents() {
  */
 function loadEvents() {
   // TODO: Utilitza localStorage.getItem('calendar_events') i JSON.parse()
+  const saved = localStorage.getItem('calendar_events');
+  if (saved) {
+    return JSON.parse(saved)
+  }
   // Retorna l'objecte obtingut o un objecte buit {} si no hi havia res guardat.
+  return {};
 }
 
+
+
+
 // TODO: Modifica addEvent() i removeEvent() perquè cridin a saveEvents() després de modificar dades.
+//                        OK
+
 
 
 // ==========================================================================
@@ -187,14 +241,50 @@ function loadEvents() {
 function sendNotification(title, body) {
   // TODO: Comprova si Notification.permission === 'granted' i crea una new Notification()
   // Mira a la pràctica AC2 com es fa!
-}
+  if ('Notification' in window && Notification.permission === 'granted') {
+    new Notification(title, { body: body });
+  }
+};
 
 // TODO: Escoltador d'esdeveniment per a 'notifyBtn' (Sol·licitar permisos de notificació)
 // Mira a la pràctica AC2 com es fa!
 
+notifyBtn.addEventListener('click', () => {
+  if (!('Notification' in window)) {
+    console.log("Este navegador no suporta notificaciones");
+    return;
+  }
+
+  Notification.requestPermission().then(permission => {
+    if (Notification.permission === 'granted') {
+      new Notification("Bienvingut", { body: 'les notificaciones estan activados' });
+    }
+  });
+});
+
+
 
 // TODO: Escoltador d'esdeveniment per a 'shareBtn' (Web Share API amb fallback a clipboard)
 // Mira a la pràctica AC2 com es fa!
+
+shareBtn.addEventListener('click', async() => {
+  const dayEvents = events[selectedDateKey] || [];
+  const textSummary = dayEvents.join('\n');
+  //Una cosa extra para que aparesca el error si no hay di selecionado o es vacio.
+  if (!selectedDateKey || !events[selectedDateKey]) {
+    alert("Selecciona algun dia con tareas.");
+    return;
+  }
+
+  if (navigator.share) {
+    await navigator.share({
+      title: `Agenda del dia ${selectedDateKey}`,
+      text: textSummary
+    })
+  }else{
+    await navigator.clipboard.writeText(textSummary);
+  }
+});
 
 
 // ==========================================================================
@@ -203,6 +293,7 @@ function sendNotification(title, body) {
 
 function initApp() {
   // TODO 1: Carrega els esdeveniments des de LocalStorage cridant loadEvents()
+  events = loadEvents();
   // TODO 2: Crida inicial a renderCalendar() per dibuixar la interfície inicial
   renderCalendar();
 }
