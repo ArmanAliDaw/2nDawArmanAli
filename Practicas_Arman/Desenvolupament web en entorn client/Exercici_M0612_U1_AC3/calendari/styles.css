@@ -6,17 +6,19 @@
 }
 
 body {
-    background: #f0f2f5;
+    background: #0f172a;
+    color: #e5e7eb;
+    color-scheme: dark;
     display: flex;
     justify-content: center;
     padding: 20px;
 }
 
 .calendar-app {
-    background: white;
+    background: #1e293b;
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     width: 100%;
     max-width: 400px;
 }
@@ -31,6 +33,7 @@ body {
 .calendar-header button {
     background: none;
     border: none;
+    color: #e5e7eb;
     font-size: 1.5rem;
     cursor: pointer;
     padding: 5px 10px;
@@ -45,7 +48,7 @@ body {
 
 .weekdays {
     font-weight: bold;
-    color: #666;
+    color: #94a3b8;
     margin-bottom: 8px;
 }
 
@@ -54,11 +57,11 @@ body {
     margin: 2px;
     border-radius: 6px;
     cursor: pointer;
-    background: #f8f9fa;
+    background: #334155;
 }
 
 .day:hover {
-    background: #e2e8f0;
+    background: #475569;
 }
 
 .day.empty {
@@ -73,12 +76,12 @@ body {
 }
 
 .day.selected {
-    border: 2px solid #1d4ed8;
+    border: 2px solid #60a5fa;
 }
 
 .day.has-events::after {
     content: '•';
-    color: #ef4444;
+    color: #f87171;
     display: block;
     font-size: 1.2rem;
     line-height: 0;
@@ -87,7 +90,7 @@ body {
 
 .events-section {
     margin-top: 20px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid #334155;
     padding-top: 15px;
 }
 
@@ -100,8 +103,14 @@ body {
 #event-input {
     flex: 1;
     padding: 8px;
-    border: 1px solid #ccc;
+    background: #0f172a;
+    color: #e5e7eb;
+    border: 1px solid #475569;
     border-radius: 4px;
+}
+
+#event-input::placeholder {
+    color: #64748b;
 }
 
 button[type="submit"],
@@ -115,7 +124,7 @@ button[type="submit"],
 }
 
 .secondary-btn {
-    background: #6b7280;
+    background: #475569;
     font-size: 0.85rem;
 }
 
@@ -132,7 +141,7 @@ ul {
 
 li {
     padding: 6px 8px;
-    background: #f3f4f6;
+    background: #334155;
     border-radius: 4px;
     margin-bottom: 4px;
     display: flex;
@@ -140,7 +149,7 @@ li {
 }
 
 .delete-btn {
-    color: #ef4444;
+    color: #f87171;
     cursor: pointer;
     font-weight: bold;
 }
