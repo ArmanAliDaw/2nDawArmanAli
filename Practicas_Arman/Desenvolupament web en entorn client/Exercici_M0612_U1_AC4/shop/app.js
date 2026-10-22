@@ -39,20 +39,20 @@ function mostrarProductes(llista) {
 // --- TASCA 1: MÈTRIQUES DEL DASHBOARD (reduce, at, some, every) ---
 function actualitzarMetriques() {
   // TODO 1.1: Utilitza 'reduce' per calcular el valor total (preu * stock)
-  const total = productes.reduce((acc,producte) => acc + producte.preu * producte.stock, 0);
+  const total = productes.reduce((acc, producte) => acc + producte.preu * producte.stock, 0);
   document.getElementById("val-total").innerText = `${total.toFixed(2)} €`;
 
   // TODO 1.2: Utilitza el mètode 'at(-1)' per obtenir l'últim producte afegit a l'array
-  // const ultim = ...
-  // document.getElementById("val-ultim").innerText = ultim ? ultim.nom : "-";
+  const ultim = productes.at(-1);
+  document.getElementById("val-ultim").innerText = ultim ? ultim.nom : "-";
 
   // TODO 1.3: Utilitza 'some' per comprovar si hi ha cap producte sense stock (stock === 0)
-  // const téSenseStock = ...
-  // document.getElementById("val-sense-stock").innerText = téSenseStock ? "⚠️ Manca stock" : "✅ Ok";
+  const téSenseStock = productes.some(producte => producte.stock === 0);
+  document.getElementById("val-sense-stock").innerText = téSenseStock ? "⚠️ Manca stock" : "✅ Ok";
 
   // TODO 1.4: Utilitza 'every' per comprovar si tots els preus són superiors a 0
-  // const totsValids = ...
-  // document.getElementById("val-preu-valid").innerText = totsValids ? "✅ Correcte" : "❌ Error";
+  const totsValids = productes.every(producte => producte.preu > 0)
+  document.getElementById("val-preu-valid").innerText = totsValids ? "✅ Correcte" : "❌ Error";
 }
 
 
@@ -71,23 +71,24 @@ document.getElementById("form-producte").addEventListener("submit", (e) => {
   if (editId) {
     // EDITAR PRODUCTE EXISTENT
     const idNum = parseInt(editId);
-    
+
     // TODO 2.3: Troba l'índex del producte amb 'findIndex'
-    // const index = ...
+    const index = productes.findIndex(producte => producte.id === idNum);
 
     if (index !== -1) {
       const producteEditat = { id: idNum, ...dadesForm };
       // TODO 2.3: Actualitza l'array 'productes' utilitzant el mètode immutable 'with' (ES2023)
-      // productes = ...
+      productes = productes.with(index, producteEditat);
     }
   } else {
     // CREAR NOU PRODUCTE
     // TODO 2.1: Calcula la nova ID trobant la màxima actual amb 'map' i 'Math.max' (si no hi ha productes, usa 0)
-    // const maxId = productes.length > 0 ? Math.max(...productes.map(p => p.id)) : 0;
-    // const nouProducte = { id: maxId + 1, ...dadesForm };
+    const maxId = productes.length > 0 ? Math.max(...productes.map(p => p.id)) : 0;
+    const nouProducte = { id: maxId + 1, ...dadesForm };
 
     // TODO 2.2: Afegeix 'nouProducte' a l'array 'productes' amb 'push'
     // ESCRIU EL TEU CODI AQUÍ
+    productes.push(nouProducte);
   }
 
   netejarFormulari();
@@ -98,11 +99,11 @@ document.getElementById("form-producte").addEventListener("submit", (e) => {
 // --- TASCA 3: ELIMINAR DE MANERA IMMUTABLE (findIndex i toSpliced) ---
 function eliminarProducte(id) {
   // TODO 3.1: Troba l'índex del producte amb 'findIndex'
-  // const index = ...
+  const index = productes.findIndex(producte => producte.id == id)
 
   if (index !== -1) {
     // TODO 3.2: Reemplaça l'array 'productes' per un de nou sense el producte eliminat fent servir 'toSpliced' (ES2023)
-    // productes = ...
+    productes = productes.toSpliced(index, 1)
     actualitzarDashboard();
   }
 }
@@ -113,7 +114,7 @@ document.getElementById("btn-cerca-last").addEventListener("click", () => {
   const cat = document.getElementById("cerca-cat-last").value;
 
   // TODO 4.1: Utilitza 'findLast' per trobar el darrer producte que pertanyi a la categoria 'cat'
-  // const ultimCat = ...
+  const ultimCat = productes.findLast(producte => producte.categoria == "cat");
 
   if (ultimCat) {
     alert(`Darrer producte trobat de ${cat}: ${ultimCat.nom} (${ultimCat.preu}€)`);
@@ -136,12 +137,12 @@ document.querySelectorAll(".sortable").forEach(th => {
     }
 
     // TODO 5.1: Utilitza 'toSorted' (ES2023) per obtenir un array ordenat segons la columna (nom, preu o stock)
-    // let llistaOrdenada = productes.toSorted((a, b) => { ... });
+    let llistaOrdenada = productes.toSorted((a, b) => estatOrdenacio.columna == "nom" ? a.nom.localeCompare(b.nom) : a.preu - b.preu);
 
     // TODO 5.2: Si 'estatOrdenacio.ascendent' és fals, inverteix la llista utilitzant 'toReversed' (ES2023)
-    // if (!estatOrdenacio.ascendent) {
-    //   llistaOrdenada = ...
-    // }
+    if (!estatOrdenacio.ascendent) {
+      llistaOrdenada = llistaOrdenada.toReversed()
+    }
 
     mostrarProductes(llistaOrdenada);
   });
@@ -157,10 +158,12 @@ function aplicarFiltres() {
   const cat = document.getElementById("filtre-categoria").value;
 
   // TODO 6.1: Utilitza 'filter' i el mètode 'includes' per filtrar els productes per nom i/o categoria
-  // const filtrats = productes.filter(p => { ... });
+  const filtrats = productes.filter(p => { p.nom.toLowerCase().includes(text.toLowerCase()) });
 
   mostrarProductes(filtrats);
 }
+const editId = document.getElementById("edit-id").value;
+console.log("editId:", editId);
 
 
 // --- FUNCIONS AUXILIARS D'EDICIÓ I FORMULARI ---
