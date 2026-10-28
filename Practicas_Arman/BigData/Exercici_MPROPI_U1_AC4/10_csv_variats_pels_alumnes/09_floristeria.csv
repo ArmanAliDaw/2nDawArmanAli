@@ -1,0 +1,121 @@
+﻿producte,tipus_planta,botiga,unitats,alçada_cm,data
+Planta aromàtica,Flor tallada,Reus,"3,0",-12.5,2025-10-05
+Ram silvestre,Flor tallada,Girona,4x,12 unitats,2026-03-19
+Ram de roses,Complements,Vic,55,127.4,2026-02-08
+Test ceràmic,Aromàtica,Vic,51,138.9,2026-10-01
+Test ceràmic,Jardineria,Sabadell,46,156.6,2026-08-14
+Planta aromàtica,Aromàtica,Reus,2,167.0,2025-02-29
+Planta d'interior,Interior,Sabadell,27,NaN?,2025-00-12
+Ram silvestre,Complements,Vic,48,175.0,2025-03-14
+Ram silvestre,Flor tallada,Girona,40,10.2,2025-01-16
+Substrat,Complements,Vic,34,81.9,2026-03-09
+   ,,Vic,0,"214,1",2026-05-08
+Ram silvestre,Complements,Sabadell,14,67.4,2026-03-06
+Substrat,Flor tallada,Vic,21,186.5,2026-07-29
+Centre de taula,Jardineria,Reus,-1,15..90,2026-04-28
+Ram silvestre,Jardineria,Sabadell,57,231.7,2025-01-01
+Planta aromàtica,Jardineria,Girona,72,51.7,2025-03-08
+Planta d'interior,Jardineria,Vic,52,47.1,2026-03-26
+Substrat,Ornamental,,31,235.4,2025-05-16
+Centre de taula,Aromàtica,Sabadell,49,210.0,2025-10-23
+Substrat,Aromàtica,Reus,74,235.0,2025-10-07
+,Aromàtica,Sabadell,24,94.3,2025-06-21
+Ram silvestre,   ,Barcelona,24,69.0,2026-09-05
+Ram de roses,Aromàtica,Vic,12,85.5,2026-06-19
+Ram de roses,Flor tallada,Vic,50,153.4,2026-01-09
+Ram de roses,Ornamental,Girona,72,40.0,2025-04-05
+Ram de roses,Aromàtica,Girona,14,174.6,2026-09-19
+Planta aromàtica,Jardineria,Girona,24,184.2,2025-06-27
+Ram silvestre,Complements,Vic,73,105.8,2026-01-16
+Substrat,Flor tallada,   ,78,1.6,2026-04-15
+ Ram de roses  ,Ornamental,Sabadell,60,46.0,2026-01-15
+Ram silvestre,Interior,Reus,75,--,ahir
+Planta aromàtica,Ornamental,Sabadell,69,"79,8",2025-08-19
+ Ram silvestre  ,Flor tallada,Reus,69,53.5,2026-04-15
+Test ceràmic,Flor tallada, Reus  ,43,86.5,2025-11-28
+Test ceràmic,Ornamental,Vic,17,203.4,2025-09-07
+Orquídia,Complements,Girona,36,202.5,2025-09-07
+Test ceràmic, Complements  ,Reus,43,107.6,2025-10-19
+Ram silvestre,Aromàtica,Barcelona,43,73.4,2025-08-10
+Test ceràmic,Ornamental,Girona,5,96.0,2025-12-12
+Test ceràmic,Flor tallada,Barcelona,73,200.9,2025-04-11
+Centre de taula,Aromàtica,Reus,48,67.6,2026-10-01
+Orquídia,Aromàtica,Girona,33,130.5,2026-01-19
+Centre de taula,Flor tallada,Barcelona,73,"184,1",2025-03-04
+Ram de roses,Jardineria,Barcelona,28,195.7,2025-08-17
+Planta d'interior,Complements,Barcelona,22,6.6,2026-04-21
+Ram de roses,Interior,Sabadell,39,208.3,2025-01-16
+Ram silvestre,Ornamental,Vic,73,"41,9",2025-04-01
+Substrat,Complements,Reus,35,217.4,2025-12-27
+Substrat,Interior,Barcelona,77,136.3,2025-02-20
+Centre de taula,Aromàtica,Barcelona,23,6.2,2025-10-09
+Orquídia,Complements,Barcelona,45,35.7,2026-09-28
+Ram de roses,Aromàtica,Reus,3,"156,7",2025-05-03
+Planta d'interior,Aromàtica,Vic,77,"33,4",2025-01-08
+Centre de taula,Flor tallada,Girona,69,218.9,2025-02-09
+Centre de taula,Interior,Reus,41,15.9,2026-07-24
+Test ceràmic,Complements,Vic,71,81.1,2025-08-08
+Centre de taula,Complements,Barcelona,61,50.5,2025-01-23
+Planta aromàtica,Complements,,-4,164.0,2025-06-30
+Planta d'interior,Interior,Vic,69,"232,9",2025-11-17
+Orquídia,Jardineria,Reus,34,148.9,2025-03-28
+Substrat,Interior,Reus,9,231.0,2025-14-03
+Centre de taula,Flor tallada,Vic,6,28.9,
+Substrat,Interior,Reus,10,91.2,2025-05-15
+Orquídia,Ornamental,Barcelona,48,206.2,2026-08-30
+Planta d'interior,Interior,Girona,29,114.7,2025-05-01
+Planta d'interior,Ornamental,Vic,39,63.8,2025-12-15
+Centre de taula,Flor tallada,Girona,69,222.3,2026-02-23
+Ram de roses,Complements,Vic,11,154.7,2025-03-08
+Orquídia,Complements,Reus,23,115.9,2025-12-29
+Test ceràmic,Jardineria,   ,1O,140.5,2025-09-12
+Ram de roses,Jardineria,Barcelona,24,223.7,2025-01-31
+Centre de taula,   ,Reus,2.5,231.2,2025-08-13
+Ram silvestre,Interior,Reus,32,102.2,2025-11-31
+Planta aromàtica,Jardineria,Barcelona,41,gratis,2025/13/01
+Ram silvestre,Jardineria,Girona, ,abc,2025-06-07
+ Test ceràmic  ,Ornamental,Girona,58,141.2,2026-08-15
+Ram de roses,Interior,Reus,54,115.8,2025-08-29
+Centre de taula,Jardineria,Barcelona,55,190.3,2025-11-18
+Ram silvestre,Complements,Vic,60,159.5,01-15-2025
+Ram silvestre,Aromàtica,Sabadell,14,145.2,2026-09-06
+Centre de taula,Interior,Girona,60,220.1,2026-04-23
+Planta aromàtica,Complements,Vic,57,184.9,2026-01-29
+Planta aromàtica,Aromàtica,Vic,dos,0,2026-06-17
+Substrat,Flor tallada,Barcelona,3,14.8,2025-10-12
+Ram silvestre,Aromàtica,Reus,54,26.7,2026-06-05
+   ,Ornamental,Reus,5,43.6,2025-01-03
+Test ceràmic,Complements,Reus,57,187.9,2025-11-22
+Test ceràmic,Aromàtica,Girona,36,191.3,2026-05-09
+Planta d'interior,Complements,Girona,??, ,2025-09-07
+Centre de taula,Ornamental,Girona,9,197.4,2025.06.10
+ Centre de taula  ,Ornamental,Vic,5,31.9,2026-08-29
+Ram silvestre,,Vic,12 unitats,130.2,2026-09-19
+Planta aromàtica,Flor tallada,Vic,39,68.9,2025-03-23
+Planta d'interior,Aromàtica,Reus,69,231.3,2025-10-01
+ Test ceràmic  ,Flor tallada,Girona,75,182.5,2025-04-14
+Centre de taula,Jardineria,Girona,61,63.0,2026-02-26
+Centre de taula,Ornamental,Girona,18,4/5,2025-1-4
+Planta aromàtica,Ornamental,Girona,74,123.1,2025-10-17
+Planta d'interior,Aromàtica,Sabadell,38,187.9,2025-02-05
+Planta aromàtica,Flor tallada,Barcelona,77,65.3,2025-11-24
+Test ceràmic,Interior,Barcelona,35,128.9,2025-07-01
+Ram silvestre,Interior,Reus,32,51.2,2026-05-01
+Planta d'interior,Aromàtica,Girona,2,206.1,2025-04-18
+Test ceràmic,Ornamental,Sabadell,19,227.7,2026-06-27
+Ram silvestre,Interior,Girona,7,117.3,2025-06-05
+Centre de taula,Aromàtica,Girona,72,185.1,2025-12-16
+Centre de taula,Interior,Vic,58,235.3,2026-01-12
+Test ceràmic,Ornamental,Sabadell,23,171.7,2025-08-29
+Ram silvestre,Aromàtica, Barcelona  ,22,216.3,2025-06-10
+Substrat,Interior,Sabadell,25,"35,7",2026-01-30
+Centre de taula,Flor tallada,Reus,23,37.0,2025-06-11
+Test ceràmic,Ornamental,Vic,75,151.6,2026-04-08
+Ram de roses,Aromàtica,Barcelona,25,6.6,2026-06-18
+Test ceràmic,Ornamental,Vic,7,"1,2,3",2025-02-30
+Ram de roses,Jardineria,Vic,54,114.8,2026-07-13
+,Complements,Barcelona,tres,196.1,2025-09-04
+Orquídia,Complements,Barcelona,55,217.5,2025-06-29
+Substrat,Jardineria,Girona,69,42.2,2025-09-26
+Substrat,,,39,194.2,2025-08-24
+Planta aromàtica,Flor tallada,Vic,54,aprox. 25,31/04/2025

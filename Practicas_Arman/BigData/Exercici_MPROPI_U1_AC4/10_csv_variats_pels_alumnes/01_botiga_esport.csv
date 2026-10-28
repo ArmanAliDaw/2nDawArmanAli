@@ -1,0 +1,121 @@
+﻿article          , familia_esportiva  , botiga   , unitats   , distancia_km, data
+Pantalons curts  , Material de raqueta,          , 1O        , 97.6        , 2025-08-27
+Guants           , Accessoris         , Lleida   , 1         , 218.1       , 2025-01-19
+Samarreta tècnica, Material de raqueta, Manresa  , 8         , 29.7        , 2026-02-23
+Bambes running   , Roba               , Tarragona, 34        , 191.5       , 2025-11-31
+Pilota           , Roba               , Barcelona, 15        , 169.8       , 2025-09-17
+Pilota           , Pilotes            , Barcelona, 76        , 134.5       , 2025-10-14
+Bambes running   , Calçat             , Barcelona, 39        , 193.6       , 2025-03-29
+Bambes running   , Material de raqueta, Girona   , 73        , gratis      , 2025/13/01
+Pantalons curts  , Accessoris         , Girona   , 2         , 38.5        , 2026-07-25
+Raqueta          ,                    , Manresa  , 4         , 191.5       , 2025-09-27
+Motxilla         , Material de raqueta, Tarragona, 33        , "76,1"      , 2025-07-01
+Samarreta tècnica, Material de raqueta, Tarragona, 33        , 21.3        , 2026-01-17
+Bambes running   , Material de raqueta, Manresa  , 27        , 68.2        , 2025-08-23
+Motxilla         , Roba               , Barcelona, 71        , 112.5       , 2025.06.10
+Pilota           , Calçat             , Manresa  , 61        , 122.5       , 2025-06-26
+Raqueta          , Accessoris         , Girona   , 62        , 143.3       , 2026-01-17
+Guants           , Roba               , Girona   , 50        , 60.7        , 2025-10-14
+Raqueta          ,                    , Tarragona, 12 unitats, 152.8       , 2025-04-03
+Raqueta          , Accessoris         , Tarragona, 22        , 176.5       , 2025-12-01
+Samarreta tècnica, Calçat             , Tarragona, 33        , "124,7"     , 2025-14-03
+Pilota           , Calçat             , Barcelona, 36        , 11.8        , 2025-03-13
+Motxilla         , Material de raqueta, Barcelona, 14        , 184.6       , 2025-02-29
+Ampolla esportiva, Material de raqueta, Lleida   , 43        , "125,1"     , 2025-11-27
+                 , Roba               , Barcelona, 33        , 197.1       , 2026-07-20
+Pantalons curts  , Calçat             , Lleida   , 37        , 238.9       , 2025-08-30
+Samarreta tècnica, Pilotes            , Manresa  , 49        , 16.2        , 2025-05-01
+Pilota           , Roba               , Barcelona, 20        , 235.8       , 2025-06-25
+Bambes running   , Material de raqueta, Tarragona, 53        , 115.9       , 2025-02-20
+Raqueta          , Accessoris         , Girona   , 3         , 41.2        , 2026-04-13
+Pantalons curts  , Calçat             , Girona   , 57        , "115,9"     , 2026-10-01
+Ampolla esportiva, Roba               , Girona   , 72        , 103.9       , 2025-11-29
+Bambes running   , Accessoris         , Girona   , 50        , 86.2        , 2026-09-12
+Bambes running   , Calçat             , Tarragona, 55        , 81.8        , 2025-08-14
+Bambes running   , Pilotes            , Barcelona, 20        , 162.0       , 2026-02-02
+Raqueta          , Pilotes            , Manresa  , 74        , "22,6"      , 2026-07-25
+Motxilla         , Material de raqueta, Manresa  , 74        , 217.3       , 2025-01-30
+Bambes running   , Accessoris         , Girona   , 35        , 7.4         , 2026-02-13
+Ampolla esportiva, Roba               , Manresa  , 59        , 218.1       , 2025-10-11
+Ampolla esportiva, Material de raqueta, Manresa  , 15        , 55.1        , 2025-09-12
+Raqueta          , Pilotes            , Barcelona, 70        , 120.3       , 2025-11-27
+Guants           , Material de raqueta, Tarragona, 65        , 210.7       , 2025-07-08
+Raqueta          , Material de raqueta, Lleida   , 10        , 20.5        , 2025-10-08
+Bambes running   , Calçat             , Tarragona, 76        , 181.9       , 2026-07-09
+Ampolla esportiva, Calçat             , Tarragona, 51        , 231.0       , 2025-01-19
+Pantalons curts  , Pilotes            , Tarragona, 63        , 175.0       , 2025-06-01
+Raqueta          , Roba               , Girona   , 20        , 198.5       , 2026-08-12
+Samarreta tècnica, Material de raqueta, Girona   , 16        , 132.1       , 2025-04-01
+                 , Pilotes            , Manresa  , tres      , "132,5"     , 2025-11-01
+Pantalons curts  , Pilotes            , Lleida   , 15        , 25.3        , 2025-12-18
+Ampolla esportiva, Calçat             , Lleida   , 76        , 238.2       , 2026-05-13
+Guants           , Calçat             , Girona   , 45        , 217.4       , 2026-02-17
+Pilota           , Material de raqueta, Manresa  , 52        , 233.6       , 2026-07-06
+Guants           , Material de raqueta, Girona   , 20        , 232.5       , 2026-01-03
+Bambes running   , Accessoris         , Barcelona, 9         , 153.3       , 2025-03-10
+Pantalons curts  ,                    ,          , 49        , 208.7       , 2026-01-30
+Bambes running   , Accessoris         , Barcelona, 22        , 19.2        , 2025-04-20
+Raqueta          , Pilotes            , Barcelona, 49        , 55.2        , 2025-03-03
+Guants           , Calçat             , Lleida   , 33        , 210.2       , 2025-01-07
+Samarreta tècnica, Material de raqueta, Girona   , 22        , 128.8       , 2025-07-11
+Raqueta          , Calçat             , Lleida   , 72        , 89.2        , 
+Guants           , Material de raqueta, Tarragona, 33        , 118.9       , 2026-06-04
+Bambes running   , Roba               , Tarragona, 29        , 199.1       , 2025-05-25
+Bambes running   , Pilotes            , Manresa  , 68        , 58.8        , 2026-07-27
+Samarreta tècnica, Calçat             , Girona   , 80        , 5.4         , 2026-08-26
+Samarreta tècnica, Accessoris         , Lleida   , 56        , 151.4       , 2026-06-17
+Raqueta          , Roba               , Manresa  , 4x        , 12 unitats  , 2026-03-04
+Pilota           , Calçat             , Lleida   , 63        , "231,7"     , 2025-07-04
+                 , Material de raqueta, Tarragona, 77        , 11.5        , 2025-07-26
+Ampolla esportiva, Roba               , Manresa  , 56        , 71.4        , 2026-05-17
+                 ,                    , Barcelona, 0         , 21.2        , 2025-04-04
+Bambes running   , Accessoris         , Tarragona, ??        ,             , 2025-02-04
+Raqueta          , Pilotes            , Tarragona, 60        , 238.8       , 2026-05-15
+Raqueta          , Accessoris         , Girona   , 25        , 236.9       , 2025-05-16
+Guants           , Pilotes            ,          , 67        , 182.4       , 2026-02-23
+Pilota           , Material de raqueta, Tarragona, 23        , 131.5       , 2025-01-01
+Ampolla esportiva, Accessoris         , Lleida   , 9         , 4/5         , 2025-1-4
+Samarreta tècnica, Pilotes            , Girona   , "3,0"     , -12.5       , 2025-12-02
+Guants           , Accessoris         , Lleida   , 14        , 20.8        , 2025-03-18
+Ampolla esportiva, Accessoris         , Girona   , 46        , 41.6        , 2025-04-30
+Guants           , Accessoris         ,          , 66        , 222.9       , 2025-10-10
+Pilota           , Calçat             , Girona   , 50        , 3.8         , 2025-08-24
+Pantalons curts  , Roba               , Lleida   , 22        , 163.2       , 2025-10-28
+Samarreta tècnica, Material de raqueta, Lleida   , 61        , 186.5       , 2026-09-29
+Guants           , Roba               , Barcelona, 73        , 228.2       , 2026-08-01
+Pilota           , Pilotes            , Girona   , 58        , 219.8       , 2025-04-29
+Motxilla         , Accessoris         , Manresa  , 35        , 145.5       , 2025-04-01
+Raqueta          , Accessoris         , Barcelona, 11        , aprox. 25   , 31/04/2025
+Bambes running   , Material de raqueta, Lleida   , 36        , 226.6       , 2025-09-27
+Guants           , Calçat             , Manresa  , dos       , 0           , 2025-03-28
+Pantalons curts  , Pilotes            , Tarragona, 14        , --          , ahir
+Motxilla         , Pilotes            , Manresa  , 19        , 226.8       , 2025-11-01
+Pilota           , Pilotes            ,          , -4        , 160.9       , 2026-02-27
+Samarreta tècnica, Material de raqueta, Tarragona, 50        , 150.6       , 2026-01-20
+Bambes running   , Calçat             , Manresa  , 34        , 172.0       , 2026-03-13
+Bambes running   , Roba               , Tarragona, 3         , 36.0        , 2025-10-11
+Pantalons curts  ,                    , Girona   , 2.5       , 17.2        , 2025-02-24
+Motxilla         , Calçat             , Barcelona, 34        , 196.2       , 2025-05-11
+Raqueta          , Roba               , Manresa  , 63        , 10.7        , 2025-08-13
+Bambes running   , Calçat             , Girona   , 13        , 186.3       , 2026-05-22
+Samarreta tècnica, Calçat             , Barcelona, 32        , 172.6       , 2025-10-05
+Raqueta          , Pilotes            , Lleida   , 78        , 154.0       , 2026-04-09
+Raqueta          , Accessoris         , Manresa  , 70        , "1,2,3"     , 2025-02-30
+Motxilla         , Accessoris         , Girona   , 9         , 229.7       , 01-15-2025
+Pilota           , Pilotes            , Girona   , 4         , 79.6        , 2025-10-09
+Samarreta tècnica, Material de raqueta, Manresa  , 34        , 8.4         , 2025-03-22
+Motxilla         , Pilotes            , Girona   , 75        , 144.5       , 2025-06-06
+Ampolla esportiva, Calçat             , Tarragona, 27        , 2.8         , 2025-03-02
+Pilota           , Pilotes            , Tarragona, 8         , 45.0        , 2025-08-26
+Raqueta          , Roba               , Manresa  , 53        , 27.5        , 2025-09-20
+Pantalons curts  , Material de raqueta, Manresa  , 12        , "231,8"     , 2026-09-16
+Pilota           , Roba               , Girona   , -1        , 15..90      , 2026-07-30
+Motxilla         , Pilotes            , Barcelona, 42        , 99.3        , 2026-09-16
+Raqueta          , Roba               , Girona   , 77        , 113.4       , 2025-05-23
+Raqueta          , Material de raqueta, Lleida   , 46        , 63.5        , 2025-11-07
+Raqueta          , Roba               , Barcelona, 27        , NaN?        , 2025-00-12
+Samarreta tècnica, Pilotes            , Manresa  , 64        , 208.7       , 2026-05-04
+Pilota           , Accessoris         , Girona   , 64        , 53.1        , 2026-08-11
+Guants           , Roba               , Manresa  , 51        , 226.6       , 2025-08-01
+Pantalons curts  , Material de raqueta, Barcelona,           , abc         , 2025-01-07
+Pilota           , Roba               , Girona   , 3         , 71.3        , 2025-03-30

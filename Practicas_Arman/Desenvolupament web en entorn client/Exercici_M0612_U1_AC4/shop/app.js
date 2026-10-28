@@ -78,7 +78,14 @@ document.getElementById("form-producte").addEventListener("submit", (e) => {
     if (index !== -1) {
       const producteEditat = { id: idNum, ...dadesForm };
       // TODO 2.3: Actualitza l'array 'productes' utilitzant el mètode immutable 'with' (ES2023)
-      productes = productes.with(index, producteEditat);
+      // productes = productes.with(index, producteEditat);
+      let i = 0;
+      for (let producte of productes) {
+        if (i === index) {
+          productes[i] = producteEditat;
+        }
+        i++;
+      }
     }
   } else {
     // CREAR NOU PRODUCTE
@@ -114,7 +121,7 @@ document.getElementById("btn-cerca-last").addEventListener("click", () => {
   const cat = document.getElementById("cerca-cat-last").value;
 
   // TODO 4.1: Utilitza 'findLast' per trobar el darrer producte que pertanyi a la categoria 'cat'
-  const ultimCat = productes.findLast(producte => producte.categoria == "cat");
+  const ultimCat = productes.findLast(producte => producte.categoria == cat);
 
   if (ultimCat) {
     alert(`Darrer producte trobat de ${cat}: ${ultimCat.nom} (${ultimCat.preu}€)`);

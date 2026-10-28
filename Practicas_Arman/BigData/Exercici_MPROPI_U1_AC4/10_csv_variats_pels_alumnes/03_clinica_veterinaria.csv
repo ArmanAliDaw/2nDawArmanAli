@@ -1,0 +1,121 @@
+﻿servei,especie,centre,animals_atesos,durada_min,data
+Microxip,Gos,Girona,12,"114,0",2025-04-21
+Radiografia,Ocells,Barcelona,71,15.3,2026-08-21
+Revisió, Ocells  ,Girona,43,193.8,2026-02-04
+Microxip,Gat,   ,23,186.3,2025-09-04
+Radiografia,Gat,Terrassa,36,119.6,2025-04-28
+Revisió,Conill,Barcelona,27,81.0,2025-04-08
+Consulta general,Altres,Barcelona,50,"46,8",2026-04-27
+Revisió,   ,Barcelona,16,77.2,2026-07-11
+Revisió,Gos,Terrassa,76,--,ahir
+Microxip,Conill,Barcelona,4x,12 unitats,2026-02-18
+Radiografia,Ocells,Girona,42,111.5,2026-06-13
+Vacuna,Gat,Girona,22,116.3,2026-06-14
+Anàlisi,Gat,Girona,35,181.3,2026-07-30
+Radiografia,Ocells,Barcelona,47,54.8,2025-11-31
+Microxip,Conill,Barcelona,15,91.5,2026-07-18
+Radiografia,Altres,Girona,17,166.3,2025-11-10
+Vacuna,Gat,Girona,21,192.1,2025-09-10
+Microxip,Ocells,Granollers,42,154.7,2026-09-28
+Anàlisi,Ocells,Barcelona,17,52.2,2026-07-27
+Vacuna,Gat,Girona,11,128.9,2026-05-01
+Vacuna,Gat,Terrassa,73,"182,3",2026-09-05
+Neteja dental, Gat  ,Terrassa,4,199.1,2026-07-18
+Consulta general,Gos,Badalona,33,172.0,2025-05-01
+Desparasitació,Altres,Barcelona,7,23.7,2025-14-03
+Revisió,Gos,Barcelona,54,160.5,2026-03-16
+Anàlisi,Gat,Granollers,9,193.6,2026-08-16
+Neteja dental,Gat,Badalona,79,109.2,2026-01-21
+Desparasitació,Altres,Badalona,27,"78,8",2025-09-07
+Vacuna,Ocells,Barcelona,40,218.2,2025-02-18
+Neteja dental,Altres,Barcelona,21,197.8,2025-02-04
+Revisió,Altres,Barcelona,65,177.4,2025-06-26
+Anàlisi,Altres,Barcelona,35,63.6,2026-02-22
+Anàlisi,Gos,Barcelona,22,110.2,2026-06-30
+Radiografia,Conill,Barcelona,53,81.5,2026-03-15
+Consulta general,Gos,Girona,3,57.2,2026-02-15
+Desparasitació,Altres,Terrassa,70,37.5,2025-11-05
+Anàlisi,Gat,Girona,??, ,2026-08-31
+Consulta general,Gat,Granollers,2,183.7,2025-06-23
+Consulta general,Conill,Girona,24,aprox. 25,31/04/2025
+Anàlisi,Gos,Badalona,21,153.2,2025-03-15
+Neteja dental,Gat,Granollers,60,42.0,2025-10-07
+Consulta general,Gos,Granollers,53,44.2,2025-06-01
+Vacuna,Ocells,Barcelona,55,67.7,2025-03-17
+Anàlisi,Gat,Badalona,14,57.3,2026-01-20
+Revisió,Gos,Girona,37,40.5,2026-07-05
+Microxip,Conill,Girona,71,180.5,2025-02-03
+Microxip,Conill,Terrassa,55,120.7,2026-05-03
+Anàlisi,Gos,Granollers,4,72.5,2026-02-14
+Microxip,Gat,Granollers,28,219.1,2025-10-30
+,Gos,Terrassa,tres,192.3,2025-12-09
+Desparasitació,   ,Barcelona,2.5,30.5,2025-07-28
+Radiografia,Gat,   ,1O,56.2,2026-07-10
+Microxip,Gat,Barcelona,41,217.7,2026-07-15
+Desparasitació,Altres,Badalona,73,NaN?,2025-00-12
+Neteja dental,Conill,Barcelona,22,6.1,2026-05-05
+Neteja dental,Gat,Granollers,24,232.1,2025-02-15
+Radiografia,Ocells,Girona,20,4/5,2025-1-4
+Vacuna,Gat,Barcelona,78,136.4,2026-01-10
+Radiografia,Gos,Barcelona,51,187.4,2025-12-02
+Radiografia,Gat,Granollers,58,91.4,2025-02-29
+Radiografia,Ocells,Granollers,29,"1,2,3",2025-02-30
+ Vacuna  ,Gat,Terrassa,6,54.8,2026-03-02
+Anàlisi,Altres,Badalona,14,193.2,2025-07-06
+   ,Gat,Granollers,63,"94,0",2026-09-24
+Revisió,Gos,Terrassa,55,25.2,2026-02-07
+Revisió,Altres,Girona,14,187.1,2026-05-15
+Radiografia,Altres,Terrassa,50,126.7,2025-07-27
+Revisió,Gos,Badalona,40,113.4,2026-06-26
+Radiografia,Gat,Barcelona,74,135.9,2026-09-11
+Consulta general,Gos, Barcelona  ,-1,15..90,2026-01-26
+Neteja dental,Gos,Granollers,65,158.9,2026-09-15
+Radiografia,Altres,Badalona,58,122.0,2026-07-27
+Radiografia,Altres,Badalona,41,131.1,2025-03-08
+Radiografia,Gat, Barcelona  ,19,"198,6",2025-01-05
+Consulta general,Gat,Terrassa,14,160.6,2025-10-27
+Neteja dental,Altres, Girona  ,67,116.6,2025-11-21
+Desparasitació,Conill,Granollers,40,31.4,2025-04-20
+Revisió,,,21,217.4,2025-08-04
+Consulta general,Gos,Terrassa,63,224.5,2025.06.10
+Microxip,Gos,Granollers,65,6.1,2026-03-13
+Neteja dental,Gat,Terrassa,3,130.4,2026-02-18
+Revisió,Gat,Terrassa,62,151.0,2025-12-15
+Anàlisi,Conill,Granollers,71,224.4,2026-05-09
+Revisió,Conill,Terrassa,60,237.5,2025-02-18
+Desparasitació,,Granollers,12 unitats,81.3,2025-12-08
+Anàlisi,Ocells,Badalona,28,64.7,2026-04-10
+Microxip,Ocells,Terrassa,53,71.2,2026-01-05
+Consulta general,Ocells,Girona,20,94.6,2026-04-08
+Anàlisi,Gos,Barcelona,39,184.2,
+Microxip,Altres,Girona,50,167.4,2026-06-23
+Radiografia,Altres,Granollers,55,6.2,2025-10-20
+Desparasitació,Gos,Girona,"3,0",-12.5,2025-06-21
+Consulta general,Altres,Badalona,7,173.7,2025-02-13
+Anàlisi,Conill,Granollers,75,129.1,2026-08-07
+Revisió,Conill, Granollers  ,40,154.3,2025-07-09
+Radiografia,Conill,Girona,8,209.2,2025-04-30
+Revisió,Conill,Barcelona,64,18.8,2025-08-16
+Anàlisi,Conill,Terrassa,32,114.6,2025-10-01
+Microxip,Ocells,Girona,34,128.8,2025-07-26
+Consulta general,Altres,Barcelona,13,185.2,2025-08-11
+Desparasitació,Ocells,Girona,27,"136,2",2025-05-04
+Neteja dental,Altres,,-4,227.5,2025-03-04
+Radiografia,Altres,Girona,69,77.3,2025-02-18
+Neteja dental,Gos,Terrassa,62,5.5,2025-08-28
+Consulta general,Gat,Terrassa,55,44.9,2025-06-21
+Revisió,Conill,Badalona,dos,0,2025-07-03
+Vacuna,Altres,Terrassa,33,38.4,2026-02-08
+Anàlisi,Gos,Granollers,68,205.5,2025-04-17
+Vacuna,Conill,Barcelona,27,gratis,2025/13/01
+Revisió,Altres,Terrassa,12,16.5,2026-02-10
+,Gos,Girona,11,"202,6",2025-10-13
+Microxip,Gat,Badalona,9,231.7,2026-02-13
+Consulta general,Gat,Badalona,59,206.9,2025-12-07
+Consulta general,Gat,Girona,12,224.7,2025-03-10
+   ,,Girona,0,183.8,2026-02-28
+Revisió,Ocells,Girona,31,53.3,01-15-2025
+Consulta general,Conill,Badalona,10,19.4,2026-05-19
+Radiografia,Conill,Granollers,67,57.5,2026-08-11
+Consulta general,Gat,,2,104.0,2025-03-02
+Neteja dental,Gat, Granollers  , ,abc,2026-04-01

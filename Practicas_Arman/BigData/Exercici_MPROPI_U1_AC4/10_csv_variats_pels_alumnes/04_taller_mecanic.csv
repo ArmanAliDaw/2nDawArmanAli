@@ -1,0 +1,121 @@
+﻿servei              , tipus_vehicle   , taller   , hores_treball, km_vehicle, data
+Pastilles de fre    , Vehicle híbrid  , Lleida   , 220.3        , 14246     , 2026-02-09
+Diagnosi electrònica, Turisme         , Tarragona, 105.6        , aprox. 25 , 31/04/2025
+Pastilles de fre    , Vehicle elèctric, Barcelona, "171,8"      , 216348    , 2025-08-05
+                    , Vehicle elèctric, Barcelona, 206.7        , 257273    , 2025-07-20
+Diagnosi electrònica,                 ,          , 161.4        , 183625    , 2025-03-15
+Revisió anual       , Furgoneta       , Sabadell , 53.0         , 35148     , 2025-03-30
+Canvi d'escombretes , Turisme         , Figueres , 233.3        , 258007    , 2026-07-28
+Diagnosi electrònica, Furgoneta       , Sabadell , 219.6        , 157966    , 2026-05-15
+Diagnosi electrònica, Vehicle híbrid  , Sabadell , "3,0"        , -12.5     , 2026-02-14
+Diagnosi electrònica, Turisme         , Tarragona, 133.9        , "1,2,3"   , 2025-02-30
+Diagnosi electrònica, Vehicle híbrid  , Figueres , 205.0        , 174243    , 2026-04-25
+Pastilles de fre    , Vehicle elèctric, Sabadell , 197.5        , 247553    , 2025-14-03
+Canvi d'oli         , Vehicle elèctric, Sabadell , 98.0         , 262543    , 2025-04-30
+Bateria             , Vehicle elèctric, Barcelona, 174.8        , 138855    , 2025-08-25
+Canvi d'oli         , Motocicleta     , Figueres , 162.8        , 29063     , 2025-02-29
+Bateria             , Vehicle híbrid  , Barcelona, 51.1         , 200845    , 2025-07-14
+Revisió anual       , Motocicleta     , Tarragona, 79.0         , 195093    , 2025-01-27
+Filtre d'aire       , Vehicle híbrid  , Lleida   , 82.6         , 284356    , 2025-10-01
+Filtre d'aire       , Furgoneta       , Sabadell , 185.2        , 131662    , 
+Bateria             , Vehicle híbrid  , Figueres , 237.5        , 56154     , 2026-06-22
+Filtre d'aire       , Furgoneta       , Barcelona, 170.9        , 100997    , 2025-08-02
+Diagnosi electrònica, Turisme         , Tarragona, "217,6"      , 83616     , 2026-07-14
+Canvi de pneumàtic  , Furgoneta       , Lleida   , 68.4         , 257174    , 01-15-2025
+Canvi de pneumàtic  , Vehicle elèctric, Sabadell , 98.6         , 38910     , 2025-03-24
+Canvi d'escombretes , Vehicle elèctric, Sabadell , 193.7        , 112719    , 2025-04-30
+Bateria             , Turisme         , Figueres , 38.3         , 199860    , 2026-09-30
+Canvi de pneumàtic  , Turisme         , Tarragona, 239.8        , 256691    , 2025-10-14
+Canvi d'oli         , Vehicle elèctric, Barcelona, 220.8        , 263370    , 2025-08-23
+Bateria             , Vehicle elèctric, Lleida   , 197.0        , 255756    , 2026-05-25
+Canvi de pneumàtic  , Vehicle híbrid  , Barcelona,              , abc       , 2025-02-20
+Canvi de pneumàtic  , Motocicleta     ,          , 100.0        , 44394     , 2026-05-18
+Revisió anual       , Motocicleta     , Sabadell , "117,4"      , 124112    , 2025-06-21
+Canvi d'escombretes , Furgoneta       , Sabadell , 125.9        , 260897    , 2025.06.10
+Diagnosi electrònica, Furgoneta       , Barcelona, 171.3        , 232610    , 2026-05-21
+Canvi d'escombretes , Furgoneta       ,          , 25.6         , 139661    , 2025-06-21
+Filtre d'aire       , Vehicle híbrid  , Barcelona, 44.8         , 12485     , 2025-08-18
+Canvi de pneumàtic  , Furgoneta       , Barcelona, 229.0        , 60379     , 2026-03-21
+                    , Turisme         , Lleida   , tres         , 112196    , 2026-04-28
+Canvi d'oli         , Vehicle elèctric, Lleida   , 58.7         , 198311    , 2026-09-11
+Revisió anual       , Turisme         , Lleida   , 74.7         , 136207    , 2026-09-09
+Bateria             , Turisme         , Tarragona, 185.4        , 116216    , 2025-12-09
+Canvi d'escombretes , Motocicleta     , Lleida   , 159.3        , 15314     , 2026-02-17
+Diagnosi electrònica, Motocicleta     , Sabadell , "203,7"      , 113830    , 2025-07-08
+Canvi de pneumàtic  , Vehicle elèctric, Sabadell , 165.4        , 180949    , 2026-04-10
+Bateria             , Vehicle elèctric, Figueres , 34.4         , 81594     , 2026-06-01
+Filtre d'aire       , Furgoneta       , Sabadell , -1           , 15..90    , 2025-01-19
+                    , Turisme         , Barcelona, 233.8        , 274897    , 2026-01-19
+Canvi de pneumàtic  , Motocicleta     , Figueres , 98.2         , 59782     , 2026-02-07
+Pastilles de fre    , Motocicleta     , Figueres , 207.5        , 269785    , 2025-03-03
+Diagnosi electrònica, Furgoneta       , Sabadell , 213.2        , 236628    , 2026-07-12
+Canvi d'escombretes , Motocicleta     , Lleida   , 237.6        , 4/5       , 2025-1-4
+Revisió anual       , Motocicleta     , Tarragona, 187.5        , 240367    , 2025-10-26
+Bateria             , Vehicle híbrid  , Sabadell , 118.2        , 231033    , 2026-03-31
+Canvi d'escombretes , Motocicleta     , Figueres , 160.4        , 122852    , 2026-08-31
+Pastilles de fre    , Vehicle elèctric, Tarragona, 48.5         , 191139    , 2025-11-31
+Canvi d'oli         , Vehicle híbrid  , Tarragona, 31.6         , 41916     , 2025-03-04
+Pastilles de fre    , Vehicle híbrid  ,          , 1O           , 156340    , 2026-06-21
+Pastilles de fre    , Motocicleta     , Figueres , ??           ,           , 2025-07-24
+Filtre d'aire       , Turisme         , Figueres , 137.9        , 192896    , 2025-02-10
+Canvi d'escombretes ,                 , Sabadell , 2.5          , 22115     , 2026-02-24
+Filtre d'aire       , Turisme         , Figueres , 110.6        , 274187    , 2026-02-02
+Canvi d'escombretes , Furgoneta       , Tarragona, 201.3        , 22097     , 2025-11-20
+Canvi d'escombretes , Vehicle elèctric, Lleida   , "163,7"      , 202374    , 2026-03-08
+Revisió anual       , Motocicleta     ,          , -4           , 290477    , 2025-01-07
+Pastilles de fre    , Furgoneta       , Tarragona, "92,6"       , 26016     , 2025-03-11
+Canvi d'oli         , Vehicle elèctric, Sabadell , 71.3         , 221886    , 2026-04-14
+Filtre d'aire       , Vehicle elèctric, Lleida   , 111.1        , 84672     , 2025-11-28
+Canvi d'escombretes , Turisme         , Tarragona, 216.7        , 298538    , 2025-06-12
+Canvi d'escombretes , Furgoneta       , Lleida   , 214.0        , 105376    , 2025-11-26
+Canvi d'oli         , Vehicle híbrid  , Lleida   , 39.6         , 46153     , 2025-07-31
+Canvi d'escombretes , Motocicleta     , Barcelona, 8.7          , 69198     , 2025-08-20
+Pastilles de fre    , Vehicle elèctric, Tarragona, 29.6         , 153257    , 2025-12-14
+Pastilles de fre    , Furgoneta       , Sabadell , 78.6         , 249104    , 2026-07-23
+Canvi d'escombretes , Turisme         , Figueres , 31.2         , 265095    , 2026-06-16
+Diagnosi electrònica, Vehicle elèctric, Barcelona, 95.7         , 211076    , 2025-12-07
+Canvi de pneumàtic  , Furgoneta       , Barcelona, 185.9        , 268543    , 2026-07-28
+Canvi d'escombretes , Vehicle elèctric, Lleida   , 226.0        , 68225     , 2025-07-27
+Pastilles de fre    , Furgoneta       , Lleida   , 187.8        , 255989    , 2026-06-22
+Pastilles de fre    , Furgoneta       , Sabadell , 94.2         , 297475    , 2025-11-24
+Bateria             , Vehicle elèctric, Sabadell , 193.2        , 21564     , 2025-01-30
+Filtre d'aire       , Turisme         , Tarragona, 198.2        , 155045    , 2026-08-22
+Canvi d'oli         , Motocicleta     , Lleida   , 29.3         , 215855    , 2025-08-30
+Diagnosi electrònica, Turisme         , Barcelona, 68.2         , 240685    , 2025-10-01
+Diagnosi electrònica, Vehicle elèctric, Barcelona, 171.4        , 134782    , 2025-02-14
+Filtre d'aire       , Vehicle elèctric, Tarragona, 14.0         , 134040    , 2025-03-13
+Diagnosi electrònica, Motocicleta     , Barcelona, 65.5         , 206648    , 2026-05-19
+Canvi d'oli         , Vehicle híbrid  , Barcelona, 154.5        , 226755    , 2026-02-16
+Bateria             , Motocicleta     , Sabadell , 236.6        , 254024    , 2026-09-28
+Revisió anual       , Vehicle elèctric, Lleida   , "166,6"      , 216767    , 2025-03-03
+Filtre d'aire       , Furgoneta       , Figueres , 25.4         , 188667    , 2025-01-22
+Pastilles de fre    ,                 , Sabadell , 12 unitats   , 30621     , 2026-03-01
+Revisió anual       , Motocicleta     , Sabadell , 25.7         , --        , ahir
+                    ,                 , Figueres , 0            , 26062     , 2026-07-09
+Pastilles de fre    , Turisme         , Sabadell , 55.9         , 107732    , 2026-07-03
+Bateria             , Vehicle elèctric, Figueres , 2.4          , gratis    , 2025/13/01
+Canvi d'escombretes , Motocicleta     , Lleida   , 186.0        , 28573     , 2025-12-11
+Canvi de pneumàtic  , Vehicle elèctric, Sabadell , 187.3        , 99630     , 2025-07-31
+Filtre d'aire       , Turisme         , Sabadell , 118.9        , 259812    , 2025-09-03
+Diagnosi electrònica, Motocicleta     , Figueres , 156.9        , 123793    , 2026-03-16
+Revisió anual       , Motocicleta     , Tarragona, 116.7        , 236111    , 2026-02-16
+Filtre d'aire       , Turisme         , Tarragona, 4x           , 12 unitats, 2026-07-18
+Canvi d'escombretes ,                 , Figueres , 27.7         , 25397     , 2026-09-30
+Bateria             , Vehicle híbrid  , Lleida   , 214.5        , 34471     , 2025-08-11
+Diagnosi electrònica, Turisme         , Sabadell , 143.8        , 94882     , 2025-03-20
+Canvi d'oli         , Furgoneta       , Tarragona, 34.5         , 8567      , 2025-09-18
+Bateria             , Vehicle elèctric, Barcelona, dos          , 0         , 2026-08-08
+Bateria             , Turisme         , Barcelona, 183.2        , 169521    , 2026-05-03
+Filtre d'aire       , Furgoneta       , Barcelona, 238.8        , 113201    , 2026-06-05
+Revisió anual       , Furgoneta       , Barcelona, "23,1"       , 275446    , 2025-04-12
+Canvi d'oli         , Furgoneta       , Figueres , 209.4        , NaN?      , 2025-00-12
+Filtre d'aire       , Vehicle elèctric, Sabadell , 235.6        , 241211    , 2025-03-14
+Filtre d'aire       , Turisme         , Tarragona, 184.2        , 172578    , 2026-09-17
+Canvi d'escombretes , Motocicleta     , Tarragona, 20.8         , 182002    , 2025-05-28
+Canvi de pneumàtic  , Furgoneta       , Lleida   , 148.0        , 210156    , 2026-02-22
+Diagnosi electrònica, Turisme         , Figueres , 48.1         , 272551    , 2026-03-05
+Filtre d'aire       , Furgoneta       , Tarragona, 93.1         , 122911    , 2025-10-09
+Diagnosi electrònica, Vehicle elèctric, Sabadell , 47.9         , 67111     , 2025-02-17
+Canvi de pneumàtic  , Turisme         , Tarragona, 230.5        , 191903    , 2025-09-24
+Bateria             , Vehicle elèctric, Tarragona, 83.5         , 11476     , 2025-09-28
+Canvi d'oli         , Vehicle híbrid  , Figueres , 129.7        , 141784    , 2025-07-31
