@@ -165,7 +165,8 @@ function aplicarFiltres() {
   const cat = document.getElementById("filtre-categoria").value;
 
   // TODO 6.1: Utilitza 'filter' i el mètode 'includes' per filtrar els productes per nom i/o categoria
-  const filtrats = productes.filter(p => { p.nom.toLowerCase().includes(text.toLowerCase()) });
+  const filtrats = productes.filter(p => { return p.nom.toLowerCase().includes(text.toLowerCase()) });
+
 
   mostrarProductes(filtrats);
 }
