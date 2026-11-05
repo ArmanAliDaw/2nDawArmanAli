@@ -112,10 +112,10 @@ let etiquetes = ["js", "html", "css", "js", "react", "html"];
 // };
 
 
-// ==========================================
-// BLOC 5: PROGRAMACIÓ FUNCIONAL (MAP, FILTER, REDUCE, CERCA)
-// ==========================================
-console.log("\n--- BLOC 5: Programació Funcional i Cerca ---");
+// // ==========================================
+// // BLOC 5: PROGRAMACIÓ FUNCIONAL (MAP, FILTER, REDUCE, CERCA)
+// // ==========================================
+// console.log("\n--- BLOC 5: Programació Funcional i Cerca ---");
 
 // // 16. map: Genera un array només amb els noms dels productes
 // console.log("16. map (noms):",productes.map(producte => producte.nom));
@@ -130,8 +130,11 @@ console.log("\n--- BLOC 5: Programació Funcional i Cerca ---");
 // // 19. reduce: Calcula el valor total de tot l'inventari sumant (preu * stock)
 // console.log("19. reduce (total valor):", productes.reduce((total , producte) => total + (producte.preu * producte.stock),0));
 
-// 20. reduce: Agrupa productes per categoria -> { Electrònica: [...], Roba: [...] }
-console.log("20. reduce (agrupar per categoria):");
+// // 20. reduce: Agrupa productes per categoria -> { Electrònica: [...], Roba: [...] }
+// console.log("20. reduce (agrupar per categoria):", productes.reduce((acc,producte)=>{
+//   acc[producte.categoria] = acc[producte.categoria] || []; 
+//   acc[producte.categoria].push(producte); 
+//   return acc;},{}));
 
 // // 21. findIndex: Troba l'índex del primer producte sense stock (stock === 0)
 // console.log("21. findIndex (sense stock):", productes.findIndex(producte => producte.stock === 0));
@@ -205,10 +208,13 @@ console.log("\n--- BLOC 8: Per què fallen aquestes comandes? ---");
 // // Error 1: Comparar arrays amb ===
 // console.log("Error 1:", [1, 2] === [1, 2]);
 // // PER QUÈ RETORNA FALSE?
+// // En teoria son parecidos pero en memoria son dos arrays distintos, por eso no son iguales.
 
 // // Error 2: Utilitzar typeof per detectar si és un Array
 // console.log("Error 2:", typeof [1, 2]);
 // // PER QUÈ RETORNA "object"?
+// // Porque los arrays son un tipo de object, para comprobar si es array se puede hacer con Array.isArray().
+
 
 // // Error 3: Intentar usar mètodes d'Array (.map) directament sobre una HTMLCollection
 // try {
@@ -217,20 +223,29 @@ console.log("\n--- BLOC 8: Per què fallen aquestes comandes? ---");
 //   console.log("Error 3:", e.message);
 // }
 // // PER QUÈ FALLA?
+// // Porque getElementsByClassName devuelve una HTMLCollection, que no tiene el método map.
+// // Para usar map habra que convertirlo con Array.from()
 
 // // Error 4: Utilitzar delete en un array per eliminar un element
 // let llistaDelete = [10, 20, 30];
 // delete llistaDelete[1];
 // console.log("Error 4:", llistaDelete, "| Length:", llistaDelete.length);
 // // PER QUÈ NO FA EL QUE S'ESPERA?
+// // Porque delete elimina el valor del índice pero no cambia la longitud del array, dejando un "hueco" (undefined) en su lugar. 
+// // Para eliminar es mejor usar  splice().
 
 // // Error 5: Retorn d'objecte literal en funció fletxa de map sense parèntesis
 // console.log("Error 5:", [1, 2].map(n => { val: n }));
 // // PER QUÈ RETORNA [undefined, undefined]?
+// // Porque al usar llaves sin paréntesis, JavaScript interpreta que es un bloque de código y no un objeto literal. 
+// // Para devolver un objeto literal, se deben usar paréntesis: [1, 2].map(n => ({ val: n })).
+
 
 // // Error 6: Executar .sort() en números sense funció de comparació
 // console.log("Error 6:", [5, 13, 1, 22, 4].sort());
 // // PER QUÈ RETORNA [1, 13, 22, 4, 5]?
+// // Porque no tiene funcion de comparacion, y sort les convierte a string y ordena por digitos. 
+// // Por eso habra que usar la comparacion numerica: [5, 13, 1, 22, 4].sort((a,b) => a-b)
 
 // // Error 7: Intentar fer 'for...of' sobre un Objecte literal
 // try {
@@ -239,24 +254,34 @@ console.log("\n--- BLOC 8: Per què fallen aquestes comandes? ---");
 //   console.log("Error 7:", e.message);
 // }
 // // PER QUÈ FALLA?
+// // Porque for...of solo funciona con objetos iterables (como arrays, strings, maps, sets), y un objeto literal no es iterable.
+
 
 // // Error 8: Passar un valor inicial incorrecte o no passar-ne cap a 'reduce' amb arrays d'objectes
 // console.log("Error 8:", productes.reduce((acc, p) => acc + p.preu));
 // // PER QUÈ RETORNA "[object Object]18453280"?
+// // Porque el acc no tiene el valor inicial. Y lo va sumando a un objeto
 
 // // Error 9: Confondre .push() guardant la variable resultat
 // let llistaPush = [1, 2, 3];
 // llistaPush = llistaPush.push(4);
 // console.log("Error 9:", llistaPush);
 // // PER QUÈ SOBREESCRIU A 4?
+// // Porque push() modifica array original y vuelve la cantidad de elementos en el array.Guarda este numero.
+// // No es que esta volviendo el push,sino esta volviento la longitud de array  
+// // Solucion es no asignar solo simplemente usar llistaPush.push(4) sin asignar a llistaPush.
 
 // // Error 10: Intentar usar .includes() sobre un array d'objectes cercant per contingut
 // console.log("Error 10:", productes.includes({ id: 1, nom: "Portàtil Pro", categoria: "Electrònica", preu: 950, stock: 4, valoracions: [5, 4, 5] }));
 // // PER QUÈ RETORNA FALSE?
+// // lo mismo que Error 1, incluedes hace una comapracion estricta (===) y aunque los objetos tengan el mismo contenido, son referencias distintas en memoria, 
+// // por lo que no son iguales.En vez se puede usar .some()
 
 // // Error 11: Intentar accés per índex negatiu directe amb claudàtors
 // console.log("Error 11:", preus[-1]);
 // // PER QUÈ RETORNA UNDEFINED?
+// // Porque los index no pueden ser negativos ni mas grande que la longitud del array
+// // Para acceder a un elemento desde el final del array, se puede usar preus.at(-1)
 
 // // Error 12: Usar forEach intentant interrompre el bucle amb 'break' o 'return'
 // [1, 2, 3, 4].forEach(n => {
@@ -264,3 +289,4 @@ console.log("\n--- BLOC 8: Per què fallen aquestes comandes? ---");
 //   console.log("Error 12 - forEach element:", n);
 // });
 // // PER QUÈ NO FA ALLÒ ESPERAT? 
+// // Porque return solo sale de la función , no del bucle forEach
