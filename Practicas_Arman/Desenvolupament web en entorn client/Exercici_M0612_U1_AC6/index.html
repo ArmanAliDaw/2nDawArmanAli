@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestor de Projectes - Pràctica DAW JS</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <h1>Board Manager DAW</h1>
+    <!-- MÒDUL 5: Custom Element amb Shadow DOM -->
+    <task-badge id="global-badge" count="0"></task-badge>
+  </header>
+
+  <div class="form-container">
+    <form id="new-task-form" class="form-group">
+      <input type="text" id="task-title-input" placeholder="Títol de la tasca..." required>
+      <input type="text" id="task-desc-input" placeholder="Descripció..." required>
+      <select id="task-status-select">
+        <option value="todo">Per fer</option>
+        <option value="in-progress">En procés</option>
+        <option value="done">Completat</option>
+      </select>
+      <button type="submit" class="btn-primary">Afegir Tasca</button>
+    </form>
+  </div>
+
+  <main class="board" id="board">
+    <!-- Columna 1 -->
+    <section class="column" data-status="todo">
+      <div class="column-header">
+        <h2>📋 Per fer</h2>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="column-content" id="todo-list"></div>
+    </section>
+
+    <!-- Columna 2 -->
+    <section class="column" data-status="in-progress">
+      <div class="column-header">
+        <h2>⚙️ En procés</h2>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="column-content" id="in-progress-list"></div>
+    </section>
+
+    <!-- Columna 3 -->
+    <section class="column" data-status="done">
+      <div class="column-header">
+        <h2>✅ Completat</h2>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="column-content" id="done-list"></div>
+    </section>
+  </main>
+
+  <!-- MÒDUL 1: TEMPLATE HTML PER A LES TARGETES -->
+  <template id="task-card-template">
+    <article class="task-card" data-task-id="">
+      <h3 class="task-title"></h3>
+      <p class="task-desc"></p>
+      <div class="actions">
+        <select class="task-status-select">
+          <option value="todo">Per fer</option>
+          <option value="in-progress">En procés</option>
+          <option value="done">Completat</option>
+        </select>
+        <button class="btn-up">▲</button>
+        <button class="btn-down">▼</button>
+        <button class="btn-delete">Eliminar</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

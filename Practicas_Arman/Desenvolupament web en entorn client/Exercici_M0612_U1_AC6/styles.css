@@ -1,0 +1,193 @@
+:root {
+  /* Paleta de colors per a tema clar */
+  --bg-color: #f8fafc;        /* Fons general molt clar (Slate 50) */
+  --card-bg: #ffffff;        /* Fons de les targetes i contenidors (Blanc pur) */
+  --accent: #4f46e5;         /* Color d'accentuació (Indigo 600) */
+  --text-main: #0f172a;      /* Text principal fosc per alt contrast (Slate 900) */
+  --text-muted: #64748b;     /* Text secundari/suau (Slate 500) */
+  --border-color: #e2e8f0;   /* Vores suaus (Slate 200) */
+  --header-bg: #f1f5f9;      /* Fons per a capçaleres de columna (Slate 100) */
+  --success: #10b981;        /* Verd d'èxit (Emerald 500) */
+  --danger: #ef4444;         /* Vermell d'error/eliminar (Red 500) */
+}
+
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+  font-family: system-ui, -apple-system, sans-serif; 
+}
+
+body { 
+  background-color: var(--bg-color); 
+  color: var(--text-main); 
+  padding: 2rem; 
+  min-height: 100vh; 
+}
+
+header { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 2rem; 
+  border-bottom: 1px solid var(--border-color); 
+  padding-bottom: 1rem; 
+}
+
+h1 { 
+  font-size: 1.5rem; 
+  font-weight: 700; 
+  color: var(--accent); 
+}
+
+.board { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 1.5rem; 
+  align-items: start; 
+}
+
+.column { 
+  background-color: var(--card-bg); 
+  border-radius: 8px; 
+  border: 1px solid var(--border-color); 
+  overflow: hidden; 
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.column-header { 
+  padding: 1rem; 
+  background-color: var(--header-bg); 
+  cursor: pointer; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  user-select: none; 
+  border-bottom: 1px solid var(--border-color);
+}
+
+.column-header h2 { 
+  font-size: 1rem; 
+  font-weight: 600; 
+}
+
+.column-content { 
+  padding: 1rem; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 0.75rem; 
+  transition: all 0.3s ease; 
+}
+
+.column-content.collapsed { 
+  display: none; 
+}
+
+.task-card { 
+  background-color: var(--card-bg); 
+  border: 1px solid var(--border-color); 
+  border-radius: 6px; 
+  padding: 1rem; 
+  position: relative; 
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.task-card.completed { 
+  border-left: 4px solid var(--success); 
+  opacity: 0.75; 
+  background-color: #f8fafc;
+}
+
+.task-card.completed h3 { 
+  text-decoration: line-through; 
+  color: var(--text-muted); 
+}
+
+.task-card h3 { 
+  font-size: 0.95rem; 
+  margin-bottom: 0.5rem; 
+  color: var(--text-main);
+}
+
+.task-card p { 
+  font-size: 0.85rem; 
+  color: var(--text-muted); 
+  margin-bottom: 0.75rem; 
+}
+
+.actions { 
+  display: flex; 
+  gap: 0.4rem; 
+  justify-content: flex-end; 
+  align-items: center; 
+}
+
+button, select.task-status-select { 
+  background: var(--card-bg); 
+  border: 1px solid var(--border-color); 
+  color: var(--text-main); 
+  padding: 0.3rem 0.5rem; 
+  border-radius: 4px; 
+  cursor: pointer; 
+  font-size: 0.75rem; 
+}
+
+button:hover, select.task-status-select:hover { 
+  background-color: var(--header-bg); 
+}
+
+button.btn-delete { 
+  border-color: var(--danger); 
+  color: var(--danger); 
+}
+
+button.btn-delete:hover {
+  background-color: #fef2f2;
+}
+
+.form-container { 
+  background-color: var(--card-bg); 
+  padding: 1rem; 
+  border-radius: 8px; 
+  margin-bottom: 2rem; 
+  border: 1px solid var(--border-color); 
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.form-group { 
+  display: flex; 
+  gap: 0.5rem; 
+  flex-wrap: wrap; 
+}
+
+input, select { 
+  background: var(--card-bg); 
+  border: 1px solid var(--border-color); 
+  color: var(--text-main); 
+  padding: 0.5rem; 
+  border-radius: 4px; 
+  flex-grow: 1; 
+}
+
+/* Fix per a la visibilitat de les opcions dels desplegables */
+option {
+  background-color: var(--card-bg);
+  color: var(--text-main);
+}
+
+input:focus, select:focus {
+  outline: 2px solid var(--accent);
+  border-color: transparent;
+}
+
+button.btn-primary { 
+  background-color: var(--accent); 
+  color: white; 
+  border: none; 
+  font-weight: 600; 
+  padding: 0.5rem 1rem; 
+}
+
+button.btn-primary:hover {
+  background-color: #4338ca;
+}
