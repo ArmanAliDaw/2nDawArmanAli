@@ -14,6 +14,7 @@ let preus = [10, 20, 30, 45, 18];
 let matriuNivells = [[1, 2], [3, [4, 5]], 6];
 let etiquetes = ["js", "html", "css", "js", "react", "html"];
 
+
 // // ==========================================
 // // BLOC 1: VALORS DE RETORN I ESTAT DE LA LLISTA (MUTACIÓ BÀSICA)
 // // ==========================================
