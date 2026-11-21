@@ -1,0 +1,133 @@
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: #0f172a;
+}
+header{
+    color: white;
+    text-align: center;
+    animation: jump 1.5s ease-in-out infinite;
+}
+
+/* Contenedor Principal */
+.container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Tarjetas */
+.box {
+    background-color: wheat;
+    border-radius: 10px;
+    display: flex; 
+    flex-direction: column;
+    padding: 10px;
+    min-height: 150px;
+    height: auto;
+}
+.box:hover{
+    background-color: #273449;
+    color: white;
+    transition: transform 0.5s ease;
+}
+.box h1 :hover{
+    margin: 0 0 5px;
+    color: black;
+}
+.box p {
+    margin: 0 0 5px;
+}
+
+/* Sobre Mi */
+/* .box:nth-child(1) {
+    background-color: aqua;
+} */
+.box:nth-child(1):hover {
+    transform: rotate(2deg) 
+}
+
+/* Habilidades */
+/* .box:nth-child(2) {
+    background-color:aquamarine;
+} */
+.box:nth-child(2):hover {
+    transform: scale(102%);
+}
+
+/* Estudios */
+.box:nth-child(3) {
+    grid-row: span 2;
+}
+.box:nth-child(3):hover {
+    transform: scale(1.10)
+}
+
+/* Contacto */
+.box:nth-child(4) {
+    grid-column: span 2;
+}
+.box:nth-child(4):hover {
+    transform: rotate(-10deg);
+}
+
+/* Experencia */
+.box:nth-child(5) {
+    grid-column: span 3;
+}
+.box:nth-child(5):hover {
+    animation: updown 1.5s ease-in-out infinite;
+}
+
+/* Button */
+.btn{
+    align-self: self-start;
+    background-color: #5a5253;
+    color: wheat;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+}
+.btn:hover{
+    background-color: aliceblue;
+    color: black;
+}
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes updown {
+    0% {
+        transform: translate(0);
+    }
+    25% {
+        transform: rotate(10deg);
+
+    }
+    50% {
+        transform: rotate(-10deg);
+
+    }
+    75%{
+        transform: rotate(10deg);
+
+    }
+    100%{
+        transform: translate(0);
+    }
+}
