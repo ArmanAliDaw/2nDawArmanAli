@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ nom }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <header class="page-header">
+        <h1>{{ nom }}</h1>
+    </header>
+
+    <div class="tornar-container">
+        <a href="{{ url_for('dashboard') }}" class="btn-tornar">← Volver</a>
+    </div>
+    <section class="explicacio">
+        <span class="etiqueta">{{ nivell }}</span>
+        <h2>Alquiler medio mensual por año</h2>
+        <p>Los años sin dato no aparecen. 2026 es un año parcial.</p>
+    </section>
+
+    <form class="filtres" method="get" action="{{ url_for('detail', nom=nom) }}">
+        <label>Ordenar por
+            <select name="order">
+                <option value="any" {% if order=='any' %}selected{% endif %}>Año</option>
+                <option value="lloguer" {% if order=='lloguer' %}selected{% endif %}>Alquiler</option>
+                <option value="canvi" {% if order=='canvi' %}selected{% endif %}>Cambio %</option>
+            </select>
+        </label>
+
+        <label>Dirección
+            <select name="direccion">
+                <option value="asc" {% if direccion=='asc' %}selected{% endif %}>Ascendente</option>
+                <option value="desc" {% if direccion=='desc' %}selected{% endif %}>Descendente</option>
+            </select>
+        </label>
+
+        <input type="submit" value="Aplicar">
+    </form>
+    {% if insightYears %}
+    <section class="explicacio">
+        <h2>Insights {{ nom }}</h2>
+        <div class="insights">
+            <div class="insight">
+                <p>Año Más Caro</p>
+                <h2>{{ insightYears.caro.any }}</h2>
+                <p>{{ "%.2f"|format(insightYears.caro.lloguer) }} €</p>
+            </div>
+            <div class="insight">
+                <p>Año Más Barato</p>
+                <h2>{{ insightYears.barato.any }}</h2>
+                <p>{{ "%.2f"|format(insightYears.barato.lloguer) }} €</p>
+            </div>
+            <div class="insight">
+                <p>Diferencia</p>
+                <h2>{{ "%.2f"|format(insightYears.caro.lloguer - insightYears.barato.lloguer )}} €</h2>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <section class="explicacio">
+        <table>
+            <thead>
+                <tr>
+                    <th>Año</th>
+                    <th>Alquiler (€/mes)</th>
+                    <th>Cambio vs año anterior</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for y in years %}
+                <tr>
+                    <td>{{ y.any }}</td>
+                    <td>{{ "%.2f"|format(y.lloguer) }} €</td>
+                    <td>
+                        {% if y.canvi is none %}
+                        –
+                        {% else %}
+                        <span class="{{ 'puja' if y.canvi >= 0 else 'baixa' }}">
+                            {{ '▲' if y.canvi >= 0 else '▼' }} {{ "%.1f"|format(y.canvi) }}%
+                        </span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    <section class="explicacio">
+        <h2>{{nom}}</h2>
+        <p>Cada punto es alquiler medio mensual de ese año</p>
+        <img src="{{ url_for('static', filename='grafica_anos.png') }}?v={{ v }}" alt="Alquiler Por Año">
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+Enllac de l'aplicacio: https://portaldades.ajuntament.barcelona.cat/ca/estadistiques/b37xv8wcjh
+Titol: Preu mitja (€) del lloguer d'habitatges
+Unitat: Mitjana
+Data de publicacio : 2026-11-22T11:46:24Z
+Llicencia: CC BY 4.0
+Tipus Filtre -> Temps: A�o; Territori: 
+Filtres -> Territori: 

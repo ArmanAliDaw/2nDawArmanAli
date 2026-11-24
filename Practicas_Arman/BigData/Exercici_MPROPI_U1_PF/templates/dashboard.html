@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alquiler en Barcelona</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <header class="page-header">
+        <a href="{{ url_for('dashboard') }}" class="btn-tornar">
+            <h1>El alquiler en Barcelona</h1>
+        </a>
+    </header>
+
+    <section class="explicacio">
+        <h2>Alquiler medio mensual por territorio 2025</h2>
+        <p>Cada tarjeta muestra el alquiler medio mensual (€) en 2025 y cuánto ha cambiado desde 2014.</p>
+        <p>He escogido solo la diferencia entre 2014 y 2025 porque no eran completos. Y por ser incompletos tambien
+            tiene su significo.</p>
+        <br>
+        <p>Porque no eran completos? Pues:</p>
+        <p><strong>2026: </strong>Porque año no se acabo y por eso faltan unos datos para completar</p>
+        <p><strong>2000-2013: </strong>Por cada nivel que escoges vas a saber las justificaciones</p>
+    </section>
+
+    <form class="filtres" method="get" action="{{ url_for('dashboard') }}">
+        <label>Nivel
+            <select name="nivell">
+                <option value="tots">-- Todos --</option>
+                {% for n in nivells %}
+                <option value="{{ n }}" {% if n==nivell %}selected{% endif %}>{{ n }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <label>Buscar
+            <input type="text" name="search" value="{{ search }}" placeholder="Nombre del territorio">
+        </label>
+        <label>Ordenar por
+            <select name="order">
+                <option value="lloguer" {% if order=='lloguer' %}selected{% endif %}>Alquiler</option>
+                <option value="variacio" {% if order=='variacio' %}selected{% endif %}>Variación %</option>
+                <option value="nom" {% if order=='nom' %}selected{% endif %}>Nombre</option>
+            </select>
+        </label>
+        <label>Dirección
+            <select name="direccion">
+                <option value="desc" {% if direccion=='desc' %}selected{% endif %}>Descendente</option>
+                <option value="asc" {% if direccion=='asc' %}selected{% endif %}>Ascendente</option>
+            </select>
+        </label>
+        <label>Vista
+            <select name="vista">
+                <option value="tarjetas" {% if vista=='tarjetas' %}selected{% endif %}>Tarjetas</option>
+                <option value="graficos" {% if vista=='graficos' %}selected{% endif %}>Graficos</option>
+                <option value="ambos" {% if vista=='ambos' %}selected{% endif %}>Ambos</option>
+            </select>
+        </label>
+        <input type="submit" value="Aplicar">
+    </form>
+    {% if nivell == "tots" and vista !='graficos' and insights %}
+    <section class="explicacio">
+        <h2>Insight De Todos Los Niveles</h2>
+        <div class="insights">
+            <div class="insight">
+                <p>Mas Caro</p>
+                <h2>{{ insights.caro.territori}} ({{insights.caro.nivell}})</h2>
+                <p>{{ insights.caro.lloguer}} €/mes</p>
+            </div>
+            <div class="insight">
+                <p>Mas Barato</p>
+                <h2>{{ insights.barato.territori}} ({{insights.caro.nivell}})</h2>
+                <p>{{ insights.barato.lloguer}} €/mes</p>
+            </div>
+            <div class="insight">
+                <p>Diferencia €</p>
+                <h2>{{"%.2f"|format(insights.caro.lloguer - insights.barato.lloguer)}} €/mes</h2>
+            </div>
+        </div>
+    </section>
+
+    {% elif nivell != "tots" and vista!='graficos' and insights %}
+    <section class="explicacio">
+        <h2>Insights {{nivell}}</h2>
+        <div class="insights">
+            <div class="insight">
+                <p>Mas Caro</p>
+                <h2>{{ insights.caro.territori}}</h2>
+                <p>{{ insights.caro.lloguer}} €/mes</p>
+            </div>
+            <div class="insight">
+                <p>Mas Barato</p>
+                <h2>{{ insights.barato.territori}}</h2>
+                <p>{{ insights.barato.lloguer}} €/mes</p>
+            </div>
+            <div class="insight">
+                <p>Diferencia €</p>
+                <h2>{{ "%.2f"|format(insights.caro.lloguer - insights.barato.lloguer)}} €/mes</h2>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if nivell == "Ambit metropolita"%}
+    <section class="explicacio-anio">
+        <h2>Àmbit Metropolità — desde 2005</h2>
+        <p>Esta agrupación supramunicipal depende de los datos del INCASÒL (no del Ayuntamiento), por lo que su serie
+            arranca en 2005 junto con la de Catalunya.</p>
+    </section>
+    {% elif nivell == "Barrio"%}
+    <section class="explicacio-anio">
+        <h2>Barrio — desde 2014</h2>
+        <p>La división oficial en 73 barrios se aprobó en 2006 y no fue hasta 2014 cuando se dispuso de sistemas que
+            ubicaran cada contrato de alquiler en su barrio exacto</p>
+    </section>
+    {% elif nivell == "Ciutat"%}
+    <section class="explicacio-anio">
+        <h2>Ciutat Barcelona — desde 2000</h2>
+        <p>El Ayuntamiento de Barcelona dispone de registros estadísticos históricos propios consolidados a nivel
+            municipal desde el inicio de la serie en el año 2000.</p>
+    </section>
+    {% elif nivell == "Districte"%}
+    <section class="explicacio-anio">
+        <h2>Districte — desde 2000</h2>
+        <p>La división administrativa de la ciudad en 10 distritos ya estaba vigente desde 1984, lo que permitió
+            desagregar los datos municipales desde el año 2000.</p>
+    </section>
+    {% elif nivell == "Catalunya"%}
+    <section class="explicacio-anio">
+        <h2>Catalunya — desde 2005</h2>
+        <p>La Generalitat (INCASÒL) comenzó a publicar esta serie estadística agregada para todo el territorio catalán a
+            partir de 2005 tras sistematizar el registro de fianzas.</p>
+    </section>
+    {% endif %}
+    {% if vista == 'graficos' and nivell == 'tots' %}
+    {% else %}
+    <p class="resultats">{{ cards|length }} territorios</p>
+    {% endif %}
+
+    {% if cards|length == 0 %}
+    <p class="resultats">No se encontraron territorios con estos filtros.</p>
+    {% endif %}
+
+    {% if vista in ['tarjetas', 'ambos'] %}
+    <div class="targetes">
+        {% for card in cards %}
+        <div class="targeta">
+            <span class="etiqueta">{{ card.nivell }}</span>
+            <h3>{{ card.territori }}</h3>
+            <p class="preu">{{ "%.0f"|format(card.lloguer) }} €/mes</p>
+            <p class="{{ 'puja' if card.variacio >= 0 else 'baixa' }}">
+                {{ '▲' if card.variacio >= 0 else '▼' }} {{ "%.1f"|format(card.variacio) }}% desde 2014
+            </p>
+            <details>
+                <summary>Ver más</summary>
+                <p>Alquiler en 2014: {{ "%.0f"|format(card.lloguer_base) }} €</p>
+                <p>Diferencia: {{ "%+.0f"|format(card.diferencia) }} €</p>
+                <a class="veure-anys" href="{{ url_for('detail', nom=card.territori) }}">Ver alquiler por año →</a>
+            </details>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% if vista in ['graficos', 'ambos'] %}
+    {% if nivell == "tots" %}
+    <section class="explicacio">
+        <h2>Selecciona un nivel</h2>
+        <p>El gráfico compara territorios del mismo nivel. Elige Barrio, Districte, etc. en el filtro "Nivel" para ver
+            la
+            diferencia entre ellos.</p>
+    </section>
+    {% elif cards|length > 0 %}
+    <div class="chart-container">
+        <section class="targeta-grafica">
+            <h2>{{ nivell }}</h2>
+            <p><strong>Como leerla:</strong> cada barra es un territorio y su longitud es el alquiler medio mensual en
+                2025.</p>
+            <p>Se muestran los 10 más caros según el filtro.</p>
+            <img src="{{ url_for('static', filename='grafica.png') }}?v={{ v }}" alt="Alquiler por territorio">
+        </section>
+    </div>
+    {% endif %}
+    {% endif %}
+</body>
+<!-- Aqui -->
+<section class="explicacio">
+    <h2>Fuente y metodología</h2>
+    <p><strong>Portal de Datos Abiertos del Ayuntamiento de Barcelona</strong></p>
+    <p>
+        <strong>Fuente:</strong>
+        <a href="https://portaldades.ajuntament.barcelona.cat/es/estad%C3%ADsticas/b37xv8wcjh" target="_blank">
+            Precio medio (€) del alquiler de viviendas
+        </a>
+    </p>
+    <p><strong>Unidad:</strong> media mensual en euros. </p>
+    <p><strong>Licencia:</strong> CC BY 4.0.</p>
+    <p><strong>Publicación:</strong> 03/11/2026.</p>
+
+    <details>
+        <summary>Ver limitaciones y uso de los datos</summary>
+        <ul>
+            <li>
+                Este CSV tenia datos rotos (ej, el Barri G�tic, la Sagrada Fam�lia etc..) Y no funcionaba con encoding
+                UTF8;Guardar el csv con encoding ANSI y en load_data() usa latin-1 en coding.
+            </li>
+            <li>
+                Con esto podia acceder los datos y usar lo. Pero Los datos rotos quedaron asi (el Barri G tic, Sagrada
+                Fam lia) y no podia corregir-lo.
+            </li>
+            <li>
+                El CSV utiliza punto y coma para separar columnas y coma para los decimales;
+                la aplicación adapta el formato decimal para poder realizar los cálculos.
+            </li>
+            <li>
+                Los valores “-” indican que no hay un dato disponible; no se consideran cero.
+            </li>
+            <li>
+                Las tarjetas comparan 2014 con 2025. Solo incluyen territorios que tienen
+                datos disponibles para ambos años, por lo que los resultados no representan
+                necesariamente todos los registros del CSV.
+            </li>
+            <li>
+                Pero si accedes dentro de cada territorio ahi si que sale los años antiguos si estan disponible.
+            </li>
+        </ul>
+    </details>
+</section>
+<!-- Hasta Aqui -->
+
+</html>

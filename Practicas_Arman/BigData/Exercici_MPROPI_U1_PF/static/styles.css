@@ -1,0 +1,626 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* =========================================================
+   1. TOKENS
+   ========================================================= */
+:root {
+    --bg: #0E0E11;
+    --surface-1: #141417;
+    --surface-2: #1C1C21;
+
+    --border: rgba(255, 255, 255, 0.08);
+    --border-top: rgba(255, 255, 255, 0.14);
+    --border-hover: rgba(255, 255, 255, 0.20);
+
+    --text: #EDEDEF;
+    --text-muted: #8A8F98;
+    --text-faint: #52565E;
+
+    --accent: #F59E0B;
+    --accent-hover: #FBB02E;
+    --accent-ink: #1A1204;
+    --accent-soft: rgba(245, 158, 11, 0.12);
+
+    --up: #E5645F;
+    --down: #3FB68B;
+
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+    --s-1: 4px;
+    --s-2: 8px;
+    --s-3: 12px;
+    --s-4: 16px;
+    --s-5: 24px;
+    --s-6: 32px;
+    --s-7: 48px;
+
+    --r-outer: 12px;
+    --r-inner: 8px;
+    --r-button: 6px;
+
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --t: 150ms;
+
+    --max-w: 1200px;
+}
+
+/* =========================================================
+   2. BASE
+   ========================================================= */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    color-scheme: dark;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
+
+::selection {
+    background: var(--accent-soft);
+    color: var(--text);
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* =========================================================
+   3. CABECERA
+   ========================================================= */
+.page-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--s-3);
+    padding: var(--s-4) var(--s-6);
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+}
+
+.page-header h1 {
+    font-size: 1.125rem;
+    display: flex;
+    align-items: center;
+    gap: var(--s-3);
+}
+
+.page-header h1::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: var(--accent);
+}
+
+/* =========================================================
+   4. BOTONES Y ENLACE VOLVER
+   ========================================================= */
+.chart-button,
+input[type=submit] {
+    font: inherit;
+    font-size: .875rem;
+    font-weight: 600;
+    color: var(--accent-ink);
+    background: var(--accent);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: var(--r-button);
+    padding: var(--s-2) var(--s-4);
+    cursor: pointer;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    transition: background var(--t) var(--ease), transform var(--t) var(--ease);
+}
+
+.chart-button:hover,
+input[type=submit]:hover {
+    background: var(--accent-hover);
+}
+
+.chart-button:active,
+input[type=submit]:active {
+    transform: scale(0.98);
+}
+
+.tornar-container {
+    width: calc(100% - 48px);
+    max-width: var(--max-w);
+    margin: var(--s-5) auto 0;
+}
+
+.btn-tornar {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s-2);
+    font-family: var(--font-mono);
+    font-size: .8125rem;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    transition: color var(--t) var(--ease);
+}
+
+.btn-tornar:hover {
+    color: var(--accent);
+}
+
+/* =========================================================
+   5. BLOQUES DE TEXTO (explicacio)
+   ========================================================= */
+.explicacio {
+    width: calc(100% - 48px);
+    max-width: var(--max-w);
+    margin: var(--s-5) auto;
+    padding: var(--s-6);
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-top-color: var(--border-top);
+    border-radius: var(--r-outer);
+}
+
+.explicacio h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--s-2);
+}
+
+.explicacio p {
+    margin: 0;
+    color: var(--text-muted);
+    max-width: 100ch;
+}
+.explicacio strong {
+    color: rgb(178, 174, 174);
+}
+
+.explicacio ul {
+    margin: var(--s-4) 0 0;
+    padding-left: var(--s-5);
+    color: var(--text-muted);
+}
+
+.explicacio li {
+    margin-bottom: var(--s-2);
+}
+
+.explicacio img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: var(--s-4);
+    background: var(--surface-1);
+    border-radius: var(--r-inner);
+}
+
+/* Aviso de por qué el nivel empieza en cierto año */
+.explicacio-anio {
+    width: calc(100% - 48px);
+    max-width: var(--max-w);
+    margin: var(--s-5) auto;
+    padding: var(--s-3);
+    background: rgba(110, 90, 45, 0.45);
+    border: 1px solid rgba(205, 175, 95, 0.8);
+    border-top-color: #d6b65f;
+    border-radius: 20px;
+    box-shadow: 0 0 4px rgba(205, 175, 95, 0.15);
+    color: #c5c5c5;
+}
+
+.explicacio-anio h2 {
+    color: #ffbd45;
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: var(--s-2);
+}
+
+.explicacio-anio p {
+    margin: 0;
+    color: #c5c5c5;
+    max-width: 100ch;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* quita esto */
+.insights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--s-4);
+    margin-top: var(--s-4);
+}
+
+.insight {
+    padding: var(--s-4);
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: var(--r-inner);
+}
+
+.insight:first-child {
+    border-top: 3px solid #dc7373;
+}
+
+.insight:nth-child(2) {
+    border-top: 3px solid #65ad85;
+}
+
+.insight:last-child {
+    border-top: 3px solid var(--border-top);
+}
+
+.insight h3 {
+    margin: var(--s-2) 0;
+    font-size: 1.1rem;
+}
+
+.insight .preu {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+@media (max-width: 700px) {
+    .insights {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================================
+   6. FILTROS (una sola fila)
+   ========================================================= */
+.filtres {
+    width: calc(100% - 48px);
+    max-width: var(--max-w);
+    margin: var(--s-5) auto;
+    padding: var(--s-5);
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    gap: var(--s-3);
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-top-color: var(--border-top);
+    border-radius: var(--r-outer);
+}
+
+.filtres label {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+    flex: 1 1 0;
+    min-width: 0;
+    font-family: var(--font-mono);
+    font-size: .6875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--text-faint);
+}
+
+.filtres select,
+.filtres input[type=text] {
+    width: 100%;
+    min-width: 0;
+    font-family: var(--font-sans);
+    font-size: .9rem;
+    padding: 10px var(--s-3);
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--r-button);
+    outline: none;
+    transition: border-color var(--t) var(--ease), background var(--t) var(--ease);
+}
+
+.filtres select:hover,
+.filtres input[type=text]:hover {
+    border-color: var(--border-hover);
+    background: var(--surface-1);
+}
+
+.filtres select:focus,
+.filtres input[type=text]:focus {
+    border-color: var(--accent);
+}
+
+.filtres input::placeholder {
+    color: var(--text-faint);
+}
+
+.filtres input[type=submit] {
+    flex: 0 0 auto;
+}
+
+.resultats {
+    width: calc(100% - 48px);
+    max-width: var(--max-w);
+    margin: var(--s-5) auto 0;
+    font-family: var(--font-mono);
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--text-faint);
+}
+
+/* =========================================================
+   7. TARJETAS DE DATOS
+   ========================================================= */
+.targetes {
+    width: calc(100% - 48px);
+    max-width: var(--max-w);
+    margin: var(--s-5) auto;
+    padding-bottom: var(--s-7);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--s-4);
+}
+
+.targeta {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-top-color: var(--border-top);
+    border-radius: var(--r-outer);
+    padding: var(--s-5);
+    transition: border-color var(--t) var(--ease), background var(--t) var(--ease);
+}
+
+.targeta:hover {
+    background: var(--surface-2);
+    border-color: var(--border-hover);
+}
+
+.targeta h3 {
+    font-size: 1rem;
+    margin: var(--s-4) 0 var(--s-2);
+}
+
+.etiqueta {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: .6875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--text-muted);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px var(--s-2);
+}
+
+.preu {
+    font-family: var(--font-mono);
+    font-size: 1.75rem;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin: var(--s-2) 0 var(--s-3);
+}
+
+.puja,
+.baixa {
+    display: inline-block;
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: .75rem;
+    font-weight: 500;
+    padding: 3px var(--s-2);
+    border-radius: 4px;
+}
+
+.puja {
+    color: var(--up);
+    background: rgba(229, 100, 95, 0.10);
+}
+
+.baixa {
+    color: var(--down);
+    background: rgba(63, 182, 139, 0.10);
+}
+
+details {
+    margin-top: var(--s-4);
+    padding-top: var(--s-3);
+    border-top: 1px solid var(--border);
+    font-size: .875rem;
+}
+
+summary {
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    font-family: var(--font-mono);
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--text-muted);
+    transition: color var(--t) var(--ease);
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+summary::after {
+    content: " +";
+}
+
+details[open] summary::after {
+    content: " –";
+}
+
+summary:hover {
+    color: var(--accent);
+}
+
+details p {
+    margin: var(--s-2) 0 0;
+    font-family: var(--font-mono);
+    font-size: .8125rem;
+    color: var(--text-muted);
+}
+
+/* =========================================================
+   8. GRÁFICAS DEL DASHBOARD
+   ========================================================= */
+.chart-container {
+    width: calc(100% - 48px);
+    max-width: var(--max-w);
+    margin: var(--s-5) auto;
+    padding-bottom: var(--s-7);
+    display: grid;
+    gap: var(--s-5);
+}
+
+.targeta-grafica {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-top-color: var(--border-top);
+    border-radius: var(--r-outer);
+    padding: var(--s-6);
+    transition: border-color var(--t) var(--ease);
+}
+
+.targeta-grafica:hover {
+    border-color: var(--border-hover);
+}
+
+.targeta-grafica h2 {
+    font-size: 1.375rem;
+    margin-bottom: var(--s-3);
+}
+
+.targeta-grafica p {
+    margin: var(--s-3) 0;
+    color: var(--text-muted);
+    max-width: 70ch;
+}
+
+.targeta-grafica p strong {
+    font-family: var(--font-mono);
+    font-size: .75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--accent);
+}
+
+.targeta-grafica img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: var(--s-5) 0;
+    background: var(--surface-1);
+    border-radius: var(--r-inner);
+}
+
+/* =========================================================
+   9. PÁGINA DE DETALLE (tabla)
+   ========================================================= */
+.veure-anys {
+    display: inline-block;
+    margin-top: var(--s-3);
+    font-family: var(--font-mono);
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.veure-anys:hover {
+    color: var(--accent-hover);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: var(--s-3) var(--s-4);
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+th {
+    font-family: var(--font-mono);
+    font-size: .6875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--text-faint);
+}
+
+td {
+    font-family: var(--font-mono);
+    font-size: .875rem;
+}
+
+tbody tr:hover {
+    background: var(--surface-2);
+}
+
+/* =========================================================
+   10. RESPONSIVE
+   ========================================================= */
+@media (max-width: 640px) {
+    .page-header {
+        padding: var(--s-4);
+    }
+
+    .tornar-container,
+    .explicacio,
+    .explicacio-anio,
+    .filtres,
+    .resultats,
+    .targetes,
+    .chart-container {
+        width: calc(100% - 32px);
+    }
+
+    .explicacio {
+        padding: var(--s-5);
+    }
+
+    .filtres {
+        flex-wrap: wrap;
+    }
+
+    .filtres label,
+    .filtres select,
+    .filtres input[type=text],
+    .filtres input[type=submit] {
+        width: 100%;
+        flex: 1 1 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}

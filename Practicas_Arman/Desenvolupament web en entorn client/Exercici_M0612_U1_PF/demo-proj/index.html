@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <title>Kanban Pro - Driver.js & FullCalendar</title>
+  <!-- CDN Driver.js -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.3.1/dist/driver.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/driver.js@1.3.1/dist/driver.js.iife.js"></script>
+  <!-- CDN FullCalendar -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; padding: 20px; background: #f1f5f9; }
+    header { display: flex; justify-content: space-between; align-items: center; background: #1e293b; color: white; padding: 15px 25px; border-radius: 8px; margin-bottom: 20px; }
+    .controls { display: flex; gap: 10px; align-items: center; }
+    button { padding: 8px 14px; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; }
+    #btn-toggle-view { background: #3b82f6; color: white; }
+    #btn-help { background: #64748b; color: white; }
+    #btn-help:hover { background: #475569; }
+    #task-form { display: flex; gap: 10px; margin-bottom: 20px; background: white; padding: 15px; border-radius: 8px; }
+    #task-form input { padding: 8px; border: 1px solid #cbd5e1; border-radius: 4px; }
+    #board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .column { background: #e2e8f0; padding: 15px; border-radius: 8px; min-height: 300px; }
+    .task-card { background: white; padding: 12px; border-radius: 6px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .task-date { font-size: 0.8em; color: #64748b; display: block; margin: 5px 0; }
+    #calendar-view { background: white; padding: 20px; border-radius: 8px; display: none; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div><h2 style="margin:0;">🚀 Kanban Pro</h2></div>
+    <div class="controls">
+      <task-badge id="global-badge" count="0"></task-badge>
+      <button id="btn-toggle-view">📅 Vista Calendari</button>
+      <button id="btn-help">❓ Ajuda</button>
+    </div>
+  </header>
+
+  <form id="task-form">
+    <input type="text" id="task-title" placeholder="Títol de la tasca..." required>
+    <input type="date" id="task-date" required>
+    <button type="submit" style="background:#10b981; color:white;">+ Afegir Tasca</button>
+  </form>
+
+  <!-- VISTA 1: KANBAN -->
+  <main id="board">
+    <section class="column">
+      <h3>📝 Per fer</h3>
+      <div id="todo-list" class="task-list"></div>
+    </section>
+    <section class="column">
+      <h3>⚙️ En curs</h3>
+      <div id="in-progress-list" class="task-list"></div>
+    </section>
+    <section class="column">
+      <h3>✅ Fet</h3>
+      <div id="done-list" class="task-list"></div>
+    </section>
+  </main>
+
+  <!-- VISTA 2: FULLCALENDAR -->
+  <section id="calendar-view">
+    <div id="calendar"></div>
+  </section>
+
+  <template id="task-card-template">
+    <article class="task-card">
+      <strong class="task-title"></strong>
+      <span class="task-date"></span>
+      <div style="margin-top:8px; display:flex; justify-content:space-between;">
+        <select class="task-status-select">
+          <option value="todo">Per fer</option>
+          <option value="in-progress">En curs</option>
+          <option value="done">Fet</option>
+        </select>
+        <button class="btn-delete" style="background:#ef4444; color:white; padding:4px 8px;">🗑️</button>
+      </div>
+    </article>
+  </template>
+
+  <script>
+    // 1. WEB COMPONENT
+    class TaskBadge extends HTMLElement {
+      constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+      }
+      static get observedAttributes() { return ['count']; }
+      attributeChangedCallback(name, oldVal, newVal) {
+        if (oldVal !== newVal) {
+          this.shadowRoot.innerHTML = `<span style="background:#f59e0b; color:#000; padding:4px 10px; border-radius:12px; font-weight:bold;">Tasques: ${newVal}</span>`;
+        }
+      }
+    }
+    customElements.define('task-badge', TaskBadge);
+
+    // 2. ESTAT GLOBAL
+    const today = new Date().toISOString().split('T')[0];
+    let state = [
+      { id: '1', title: 'Dissenyar base de dades', status: 'todo', dueDate: today },
+      { id: '2', title: 'Implementar Shadow DOM', status: 'in-progress', dueDate: today }
+    ];
+
+    let calendarInstance = null;
+    let isCalendarView = false;
+
+    // 3. RENDERITZAT KANBAN
+    function createTaskCard(task) {
+      const tpl = document.querySelector('#task-card-template');
+      const clone = tpl.content.cloneNode(true);
+      const card = clone.querySelector('.task-card');
+      card.dataset.taskId = task.id;
+      clone.querySelector('.task-title').textContent = task.title;
+      clone.querySelector('.task-date').textContent = `📅 ${task.dueDate}`;
+      clone.querySelector('.task-status-select').value = task.status;
+      return clone;
+    }
+
+    function renderAllTasks() {
+      ['todo', 'in-progress', 'done'].forEach(st => {
+        document.querySelector(`#${st}-list`).innerHTML = '';
+      });
+      state.forEach(task => {
+        document.querySelector(`#${task.status}-list`).appendChild(createTaskCard(task));
+      });
+      document.querySelector('#global-badge').setAttribute('count', state.length);
+      
+      if (calendarInstance && isCalendarView) {
+        syncCalendar();
+      }
+    }
+
+    // 4. CREAR, MOURE I ELIMINAR TASQUES
+    document.querySelector('#task-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const titleInput = document.querySelector('#task-title');
+      const dateInput = document.querySelector('#task-date');
+      
+      state.push({
+        id: Date.now().toString(),
+        title: titleInput.value.trim(),
+        status: 'todo',
+        dueDate: dateInput.value || today
+      });
+      
+      titleInput.value = '';
+      dateInput.value = today;
+      renderAllTasks();
+    });
+
+    document.querySelector('#board').addEventListener('change', (e) => {
+      if (e.target.matches('.task-status-select')) {
+        const card = e.target.closest('.task-card');
+        const task = state.find(t => t.id === card.dataset.taskId);
+        if (task) {
+          task.status = e.target.value;
+          renderAllTasks();
+        }
+      }
+    });
+
+    document.querySelector('#board').addEventListener('click', (e) => {
+      if (e.target.matches('.btn-delete')) {
+        const card = e.target.closest('.task-card');
+        state = state.filter(t => t.id !== card.dataset.taskId);
+        renderAllTasks();
+      }
+    });
+
+    // 5. FULLCALENDAR
+    function getMappedEvents() {
+      const colorMap = { 'todo': '#3b82f6', 'in-progress': '#f59e0b', 'done': '#10b981' };
+      return state.map(task => ({
+        id: task.id,
+        title: task.title,
+        start: task.dueDate,
+        backgroundColor: colorMap[task.status],
+        borderColor: colorMap[task.status]
+      }));
+    }
+
+    function initCalendar() {
+      const calendarEl = document.getElementById('calendar');
+      calendarInstance = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        locale: 'ca',
+        firstDay: 1,
+        editable: true,
+        events: getMappedEvents(),
+        eventDrop: (info) => {
+          const task = state.find(t => t.id === info.event.id);
+          if (task) {
+            task.dueDate = info.event.startStr;
+            renderAllTasks();
+          }
+        },
+        eventClick: (info) => {
+          alert(`Tasca: ${info.event.title}\nData límit: ${info.event.startStr}`);
+        }
+      });
+    }
+
+    function syncCalendar() {
+      if (!calendarInstance) return;
+      calendarInstance.removeAllEvents();
+      calendarInstance.addEventSource(getMappedEvents());
+    }
+
+    function setCalendarView(showCalendar) {
+      isCalendarView = showCalendar;
+      const boardEl = document.querySelector('#board');
+      const calViewEl = document.querySelector('#calendar-view');
+      const toggleBtn = document.querySelector('#btn-toggle-view');
+
+      if (isCalendarView) {
+        boardEl.style.display = 'none';
+        calViewEl.style.display = 'block';
+        toggleBtn.textContent = '📋 Vista Taulell';
+        calendarInstance.render();
+        syncCalendar();
+      } else {
+        boardEl.style.display = 'grid';
+        calViewEl.style.display = 'none';
+        toggleBtn.textContent = '📅 Vista Calendari';
+      }
+    }
+
+    document.querySelector('#btn-toggle-view').addEventListener('click', () => {
+      setCalendarView(!isCalendarView);
+    });
+
+    // 6. DRIVER.JS (S'INICIA NOMÉS AMB EL BOTÓ D'AJUDA)
+    function startTour() {
+      // Si l'usuari està al calendari, tornem al taulell perquè el tour trobi #board
+      if (isCalendarView) {
+        setCalendarView(false);
+      }
+
+      const driverFn = window.driver?.js?.driver || window.driver;
+      if (typeof driverFn !== 'function') {
+        alert('No s’ha pogut carregar la llibreria Driver.js.');
+        return;
+      }
+
+      const driverObj = driverFn({
+        showProgress: true,
+        nextBtnText: 'Següent →',
+        prevBtnText: '← Anterior',
+        doneBtnText: 'Entesos!',
+        steps: [
+          { element: '#task-form', popover: { title: '1. Crea noves tasques', description: 'Introdueix el títol i la data límit per afegir-la.' } },
+          { element: '#board', popover: { title: '2. Flux Kanban', description: 'Canvia l’estat o elimina tasques.' } },
+          { element: '#global-badge', popover: { title: '3. Web Component', description: 'Comptador reactiu amb Shadow DOM.' } },
+          { element: '#btn-toggle-view', popover: { title: '4. Vista Calendari', description: 'Visualitza i arrossega tasques per dates.' } }
+        ]
+      });
+      driverObj.drive();
+    }
+
+    document.querySelector('#btn-help').addEventListener('click', startTour);
+
+    // 7. ARRANQUEM L'APP
+    document.querySelector('#task-date').value = today;
+    initCalendar();
+    renderAllTasks();
+  </script>
+</body>
+</html>
