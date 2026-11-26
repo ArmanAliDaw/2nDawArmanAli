@@ -1,0 +1,567 @@
+:root {
+  --bg-color: #f8fafc;
+  --card-bg: #ffffff;
+  --accent: #4f46e5;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --header-bg: #f1f5f9;
+  --success: #10b981;
+  --danger: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #000000;
+  color: #ffffff;
+  padding: 15px 25px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.column {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.2s ease;
+}
+
+.column.drag-over {
+  background-color: #eef2ff;
+}
+
+.column-header {
+  padding: 1rem;
+  background-color: var(--header-bg);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.column-header h2 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.column-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 80px;
+  transition: all 0.3s ease;
+}
+
+.column-content.collapsed {
+  display: none;
+}
+
+.task-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 1rem;
+  position: relative;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.task-card:hover {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  border-color: var(--accent);
+}
+
+.column[data-status="todo"] .task-card {
+  border-left: 4px solid #3b82f6;
+}
+
+.column[data-status="in-progress"] .task-card {
+  border-left: 4px solid #f59e0b;
+}
+
+.column[data-status="done"] .task-card {
+  border-left: 4px solid var(--success);
+}
+
+.task-card.completed {
+  opacity: 0.75;
+  background-color: #f8fafc;
+}
+
+.task-card.completed:hover {
+  opacity: 1;
+}
+
+.task-card.completed h3 {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.task-card h3 {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+
+.task-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+button,
+select.task-status-select {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+
+button:hover,
+select.task-status-select:hover {
+  background-color: var(--header-bg);
+}
+
+.actions button {
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.actions button:hover {
+  transform: scale(1.1);
+}
+
+.actions button:active {
+  transform: scale(0.95);
+}
+
+button.btn-delete {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+button.btn-delete:hover {
+  background-color: #fef2f2;
+}
+
+.form-container {
+  background-color: var(--card-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+input,
+select {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 0.5rem;
+  border-radius: 4px;
+  flex-grow: 1;
+}
+
+option {
+  background-color: var(--card-bg);
+  color: var(--text-main);
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid var(--accent);
+  border-color: transparent;
+}
+
+button.btn-primary {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+}
+
+button.btn-primary:hover {
+  background-color: #4338ca;
+}
+
+#btn-help {
+  background: #000000;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#btn-help:hover {
+  background: #475569;
+}
+
+/* ---------- ANIMACIONES DE ARRASTRE (SortableJS) ---------- */
+.sortable-ghost {
+  opacity: 0.4;
+  background: #e0e7ff;
+}
+
+/* ---------- SWEETALERT2 (estil compacte comú) ---------- */
+/* ===== BOARD MANAGER: SWEETALERT ===== */
+
+.board-swal {
+  font-family: inherit !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 16px !important;
+  background: #ffffff !important;
+  box-shadow: 0 16px 45px rgba(15, 23, 42, 0.14) !important;
+}
+
+.board-swal-title,
+.swal-small-title {
+  color: #0f172a !important;
+  font-size: 21px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.5px !important;
+}
+
+.board-swal-confirm,
+.board-swal-cancel {
+  border-radius: 8px !important;
+  padding: 11px 19px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  box-shadow: none !important;
+  transition: transform 0.2s, filter 0.2s !important;
+}
+
+.board-swal-confirm:hover,
+.board-swal-cancel:hover {
+  filter: brightness(0.95);
+  transform: translateY(-1px);
+}
+
+/* Confirmación de eliminación */
+.board-swal-delete .swal2-icon {
+  border-color: #fecaca !important;
+  color: #ef4444 !important;
+}
+
+/* Notificaciones toast */
+.board-swal-toast {
+  border: 1px solid #e2e8f0 !important;
+  border-left: 4px solid #10b981 !important;
+  border-radius: 11px !important;
+  padding: 13px 17px !important;
+  background: #ffffff !important;
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.12) !important;
+}
+
+.board-swal-toast .swal2-title {
+  color: #0f172a !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+}
+
+/* Formulario de edición */
+.board-edit-form {
+  text-align: left;
+  margin-top: 12px;
+}
+
+.board-edit-form label {
+  display: block;
+  margin: 15px 0 6px;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.board-edit-form .swal-field {
+  display: block;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 11px 13px !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 9px !important;
+  background: #f8fafc !important;
+  color: #0f172a !important;
+  font-family: inherit !important;
+  font-size: 14px !important;
+  box-shadow: none !important;
+}
+
+.board-edit-form .swal-field:focus {
+  border-color: #4f46e5 !important;
+  background: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12) !important;
+  outline: none !important;
+}
+
+.board-edit-form textarea.swal-field {
+  min-height: 105px;
+  resize: vertical;
+}
+
+.board-swal-edit .swal2-actions {
+  margin-top: 22px !important;
+}
+
+/* ===== CELEBRACIÓN DE TAREA COMPLETADA ===== */
+
+/* ==========================================
+   ESTILOS BASE (Versión Grande / Por Defecto)
+   ========================================== */
+.swal2-container:has(.completion-popup) {
+  background: rgba(15, 23, 42, 0.35) !important;
+  backdrop-filter: blur(3px);
+}
+
+.completion-popup {
+  width: 420px !important;
+  max-width: calc(100vw - 32px) !important;
+  min-height: auto !important;
+  max-height: none !important;
+  height: auto !important;
+  border-radius: 16px !important;
+  padding: 1.7em !important;
+  background: #ffffff !important;
+  box-shadow: 0 16px 45px rgba(15, 23, 42, 0.14) !important;
+}
+
+.completion-popup .swal2-title {
+  color: #4f46e5 !important;
+  font-size: 90px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1.5px;
+  margin: 0;
+}
+
+.completion-content {
+  padding: 15px;
+  text-align: center;
+}
+
+.completion-emoji {
+  font-size: clamp(75px, 15vw, 120px);
+  margin: 10px 0 20px;
+  animation: trophyBounce 1s ease infinite alternate;
+}
+
+.completion-content h2 {
+  margin: 10px 0;
+  color: #0f172a;
+  font-size: clamp(25px, 5vw, 38px);
+  font-weight: 800;
+}
+
+.completion-content p {
+  margin: 12px 0;
+  color: #475569;
+  font-size: 19px;
+}
+
+.completion-content span {
+  display: block;
+  margin-top: 20px;
+  color: #10b981;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.completion-button {
+  margin-top: 25px !important;
+  padding: 14px 35px !important;
+  border-radius: 10px !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  box-shadow: 0 5px 15px rgba(79, 70, 229, 0.2) !important;
+}
+
+/* ==========================================
+   VERSION COMPACTA (Sobrescribe solo lo necesario)
+   ========================================== */
+.completion-popup.is-compact {
+  padding: 18px 22px !important;
+}
+
+.completion-popup.is-compact .swal2-title {
+  font-size: 21px !important;
+  margin: 5px 0 !important;
+}
+
+.completion-popup.is-compact .completion-content {
+  padding: 0 !important;
+}
+
+.completion-popup.is-compact .completion-emoji {
+  font-size: 55px !important;
+  margin: 3px 0 8px !important;
+}
+
+.completion-popup.is-compact .completion-content h2 {
+  font-size: 22px !important;
+  margin: 5px 0 !important;
+}
+
+.completion-popup.is-compact .completion-content p {
+  font-size: 14px !important;
+  margin: 6px 0 !important;
+}
+
+.completion-popup.is-compact .completion-content span {
+  font-size: 13px !important;
+  margin-top: 8px !important;
+}
+
+.completion-popup.is-compact .completion-button {
+  margin-top: 12px !important;
+  padding: 10px 25px !important;
+}
+
+/* Indicador de tasca vencuda */
+.task-card.overdue {
+  border-left: 4px solid #ef4444 !important;
+  background-color: #fef2f2;
+}
+
+/* Estils del Modal tipus Trello */
+.trello-modal {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.trello-modal label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.trello-modal .swal-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  background: #f8fafc;
+}
+
+.trello-modal .swal-field:focus {
+  outline: 2px solid #4f46e5;
+  background: #fff;
+}
+
+.date-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+.board-swal-toast-overdue {
+  border-left: 4px solid #ef4444 !important;
+}
+
+
+/* ==========================================
+   ANIMACIONES Y MEDIA QUERIES GLOBALES
+   ========================================== */
+.completion-confetti {
+  position: fixed;
+  top: -15px;
+  width: 9px;
+  height: 14px;
+  z-index: 100000;
+  pointer-events: none;
+  animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes trophyBounce {
+  from {
+    transform: translateY(0) rotate(-5deg);
+  }
+
+  to {
+    transform: translateY(-15px) rotate(5deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .completion-emoji {
+    animation: none;
+  }
+
+  .completion-confetti {
+    display: none;
+  }
+}

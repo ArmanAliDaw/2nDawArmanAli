@@ -8,6 +8,12 @@
   <script src="https://cdn.jsdelivr.net/npm/driver.js@1.3.1/dist/driver.js.iife.js"></script>
   <!-- CDN FullCalendar -->
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+
+  <!-- Drag & Drop -->
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
+
+  <!-- Sweet Alert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.all.min.js"></script>
   <style>
     body { font-family: system-ui, sans-serif; margin: 0; padding: 20px; background: #f1f5f9; }
     header { display: flex; justify-content: space-between; align-items: center; background: #1e293b; color: white; padding: 15px 25px; border-radius: 8px; margin-bottom: 20px; }
@@ -23,6 +29,11 @@
     .task-card { background: white; padding: 12px; border-radius: 6px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
     .task-date { font-size: 0.8em; color: #64748b; display: block; margin: 5px 0; }
     #calendar-view { background: white; padding: 20px; border-radius: 8px; display: none; }
+
+    .task-list { min-height: 200px; }
+    .task-card { cursor: grab; }
+    .sortable-ghost { opacity: 0.4; }
+    .sortable-chosen { cursor: grabbing; }
   </style>
 </head>
 <body>
@@ -159,13 +170,13 @@
       }
     });
 
-    document.querySelector('#board').addEventListener('click', (e) => {
-      if (e.target.matches('.btn-delete')) {
-        const card = e.target.closest('.task-card');
-        state = state.filter(t => t.id !== card.dataset.taskId);
-        renderAllTasks();
-      }
-    });
+    // document.querySelector('#board').addEventListener('click', (e) => {
+    //   if (e.target.matches('.btn-delete')) {
+    //     const card = e.target.closest('.task-card');
+    //     state = state.filter(t => t.id !== card.dataset.taskId);
+    //     renderAllTasks();
+    //   }
+    // });
 
     // 5. FULLCALENDAR
     function getMappedEvents() {
@@ -194,8 +205,15 @@
             renderAllTasks();
           }
         },
+        // eventClick: (info) => {
+        //   alert(`Tasca: ${info.event.title}\nData límit: ${info.event.startStr}`);
+        // }
         eventClick: (info) => {
-          alert(`Tasca: ${info.event.title}\nData límit: ${info.event.startStr}`);
+          Swal.fire({
+            title: info.event.title,
+            text: 'Fecha límite: ' + info.event.startStr,
+            icon: 'info'
+          });
         }
       });
     }
@@ -232,9 +250,6 @@
     // 6. DRIVER.JS (S'INICIA NOMÉS AMB EL BOTÓ D'AJUDA)
     function startTour() {
       // Si l'usuari està al calendari, tornem al taulell perquè el tour trobi #board
-      if (isCalendarView) {
-        setCalendarView(false);
-      }
 
       const driverFn = window.driver?.js?.driver || window.driver;
       if (typeof driverFn !== 'function') {
@@ -247,11 +262,20 @@
         nextBtnText: 'Següent →',
         prevBtnText: '← Anterior',
         doneBtnText: 'Entesos!',
+        // steps: [
+        //   { element: '#task-form', popover: { title: '1. Crea noves tasques', description: 'Introdueix el títol i la data límit per afegir-la.' } },
+        //   { element: '#board', popover: { title: '2. Flux Kanban', description: 'Canvia l’estat o elimina tasques.' } },
+        //   { element: '#global-badge', popover: { title: '3. Web Component', description: 'Comptador reactiu amb Shadow DOM.' } },
+        //   { element: '#btn-toggle-view', popover: { title: '4. Vista Calendari', description: 'Visualitza i arrossega tasques per dates.' } }
+        // ]
         steps: [
-          { element: '#task-form', popover: { title: '1. Crea noves tasques', description: 'Introdueix el títol i la data límit per afegir-la.' } },
-          { element: '#board', popover: { title: '2. Flux Kanban', description: 'Canvia l’estat o elimina tasques.' } },
-          { element: '#global-badge', popover: { title: '3. Web Component', description: 'Comptador reactiu amb Shadow DOM.' } },
-          { element: '#btn-toggle-view', popover: { title: '4. Vista Calendari', description: 'Visualitza i arrossega tasques per dates.' } }
+          { element: '#task-form', popover: { title: '1. Crea tareas', description: 'Escribe un título y una fecha límite y pulsa "Afegir Tasca". Verás un aviso de confirmación.', side: 'bottom' } },
+          { element: '#todo-list', popover: { title: '2. Agarra una tarjeta', description: 'Mantén pulsado el ratón sobre una tarjeta para agarrarla.', side: 'right' } },
+          { element: '#in-progress-list', popover: { title: '3. Suéltala en otra columna', description: 'Arrastra la tarjeta hasta otra columna y suéltala: su estado cambia al instante.', side: 'bottom' } },
+          { element: '#done-list', popover: { title: '4. Llévala a "Fet"', description: 'Cuando termines una tarea, arrástrala a esta columna.', side: 'left' } },
+          { element: '#board', popover: { title: '5. Elimina tareas', description: 'Pulsa 🗑️ en una tarjeta: te pedirá confirmación antes de borrarla.', side: 'top' } },
+          { element: '#btn-toggle-view', popover: { title: '6. Calendario', description: 'En el calendario, haz clic en una tarea para ver sus detalles.', side: 'bottom' } },
+          { element: '#global-badge', popover: { title: '7. Contador', description: 'Muestra el total de tareas.', side: 'bottom' } }
         ]
       });
       driverObj.drive();
@@ -259,7 +283,65 @@
 
     document.querySelector('#btn-help').addEventListener('click', startTour);
 
-    // 7. ARRANQUEM L'APP
+    // 7. SORTABLEJS: ARROSSEGAR TARGETES ENTRE COLUMNES
+      function syncStateFromDOM() {
+        const byId = Object.fromEntries(state.map(t => [t.id, t]));
+        const newState = [];
+        ['todo', 'in-progress', 'done'].forEach(st => {
+          document.querySelectorAll(`#${st}-list .task-card`).forEach(card => {
+            const task = byId[card.dataset.taskId];
+            if (task) { task.status = st; newState.push(task); }
+          });
+        });
+        state = newState;
+      }
+
+      function initDragAndDrop() {
+        document.querySelectorAll('.task-list').forEach(list => {
+          new Sortable(list, {
+            group: 'kanban',          // permet moure entre llistes
+            animation: 150,
+            ghostClass: 'sortable-ghost',
+            filter: 'select, .btn-delete',   // no arrossegar si cliques el select o el botó
+            preventOnFilter: false,
+            onEnd: () => {
+              syncStateFromDOM();     // l'estat és la font de veritat
+              renderAllTasks();       // actualitza comptador i calendari
+            }
+          });
+        });
+      }
+
+      document.querySelector('#task-date').value = today;
+      initCalendar();
+      renderAllTasks();
+      initDragAndDrop();
+
+
+      // Sweet Alert
+      document.querySelector('#board').addEventListener('click', async (e) => {
+          if (e.target.matches('.btn-delete')) {
+            const card = e.target.closest('.task-card');
+            const result = await Swal.fire({
+              title: 'Eliminar tarea?',
+              icon: 'question',
+              width: 300,
+              padding: '1em',
+              showCancelButton: true,
+              confirmButtonText: 'Eliminar',
+              cancelButtonText: 'Cancelar',
+              confirmButtonColor: '#ef4444',
+              cancelButtonColor: '#64748b',
+              customClass: { title: 'swal-small-title', popup: 'swal-small' }
+            });
+            if (result.isConfirmed) {
+              state = state.filter(t => t.id !== card.dataset.taskId);
+              renderAllTasks();
+            }
+          }
+        });
+
+    // 8. ARRANQUEM L'APP
     document.querySelector('#task-date').value = today;
     initCalendar();
     renderAllTasks();
